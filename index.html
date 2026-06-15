@@ -26,11 +26,18 @@ button{font-family:var(--font);cursor:pointer;}
 #app{display:flex;flex-direction:column;min-height:100vh;}
 @media(min-width:860px){
   #app{flex-direction:row;}
-  #sb{width:260px;min-height:100vh;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;}
   #main{flex:1;overflow-y:auto;height:100vh;}
   #mnav{display:none!important;}
 }
-#sb{background:var(--card);border-right:1px solid var(--border);}
+/* Phone: the sidebar IS the slide-out drawer (off-screen until ☰ is tapped) */
+#sb{display:flex;flex-direction:column;background:var(--card);border-right:1px solid var(--border);position:fixed;top:0;left:0;bottom:0;width:264px;max-width:84vw;z-index:50;transform:translateX(-100%);transition:transform .22s ease;overflow-y:auto;box-shadow:2px 0 18px rgba(0,0,0,.16);}
+#sb.open{transform:translateX(0);}
+/* Desktop: static left sidebar (declared AFTER the phone rule so it wins at ≥860px) */
+@media(min-width:860px){
+  #sb{width:260px;min-height:100vh;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;transform:none;box-shadow:none;z-index:auto;max-width:none;}
+}
+.sb-close{background:none;border:none;font-size:18px;color:var(--tx3);cursor:pointer;padding:2px 6px;line-height:1;margin-left:4px;}
+@media(min-width:860px){.sb-close{display:none;}}
 #main{flex:1;padding-top:var(--mtop-h);}
 @media(min-width:860px){#main{padding-top:0;}}
 
@@ -85,6 +92,14 @@ button{font-family:var(--font);cursor:pointer;}
 .action-title{font-size:13px;font-weight:600;}
 .action-sub{font-size:11px;color:var(--tx3);margin-top:1px;}
 .action-badge{margin-left:auto;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;flex-shrink:0;}
+
+/* compact 3-up shortcut cards (Grammar / Word Index / Anki) */
+.tool-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 8px;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;}
+.tool-card:hover{border-color:var(--gr);background:var(--grl);}
+.tool-ic{font-size:22px;}
+.tool-title{font-size:12px;font-weight:600;}
+.tool-sub{font-size:10px;color:var(--tx3);line-height:1.2;}
 
 /* topic cards on dashboard */
 .topic-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px;}
@@ -776,6 +791,7 @@ button{font-family:var(--font);cursor:pointer;}
         <div class="logo-t"><span class="logo-ru">Русский</span>Путь</div>
         <!-- MUTE_TOGGLE: master mute, overrides all AudioService.speak() calls -->
         <button class="mute-btn" id="mute-btn" onclick="toggleMute()" title="Mute / unmute all sounds">🔊</button>
+        <button class="sb-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
       </div>
       <div class="logo-s">Russian made simple</div>
     </div>
@@ -815,6 +831,17 @@ button{font-family:var(--font);cursor:pointer;}
             <span class="action-ic">⭐</span>
             <div><div class="action-title">My Words</div><div class="action-sub">Your bookmarked words</div></div>
             <span class="action-badge" id="mw-badge" style="background:var(--gdl);color:var(--gd)">0</span>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-card" onclick="go('grammar',document.querySelector('[data-s=grammar]'))">
+            <span class="tool-ic">📖</span><div class="tool-title">Grammar</div><div class="tool-sub">Reference</div>
+          </div>
+          <div class="tool-card" onclick="go('wordindex',document.querySelector('[data-s=wordindex]'))">
+            <span class="tool-ic">🔍</span><div class="tool-title">Word Index</div><div class="tool-sub">All words A–Я</div>
+          </div>
+          <div class="tool-card" onclick="go('anki',document.querySelector('[data-s=anki]'))">
+            <span class="tool-ic">📦</span><div class="tool-title">Anki Export</div><div class="tool-sub">Download deck</div>
           </div>
         </div>
         <div class="dash-sec" id="dash-topic-heading">Curriculum — 15 topics</div>
@@ -915,19 +942,6 @@ button{font-family:var(--font);cursor:pointer;}
   </div>
 </div>
 
-<nav id="mnav">
-  <div class="mdrawer-hd">
-    <div class="mdrawer-ttl"><span class="logo-ru">Русский</span>Путь</div>
-    <button class="mdrawer-x" onclick="closeMenu()" aria-label="Close menu">✕</button>
-  </div>
-  <button class="mnb on" data-s="dash"     onclick="go('dash',this)"><span class="mnb-ic">🏠</span>Home</button>
-  <button class="mnb"    data-s="lesson"   onclick="go('lesson',this)" id="mn-lesson"><span class="mnb-ic">📚</span>Lesson</button>
-  <button class="mnb"    data-s="mistakes" onclick="go('mistakes',this)"><span class="mnb-ic">⚠️</span>Mistakes</button>
-  <button class="mnb"    data-s="mywords"  onclick="go('mywords',this)"><span class="mnb-ic">⭐</span>My Words</button>
-  <button class="mnb"    data-s="anki"     onclick="go('anki',this)"><span class="mnb-ic">📦</span>Anki</button>
-  <button class="mnb"    data-s="grammar"  onclick="go('grammar',this)"><span class="mnb-ic">📖</span>Grammar</button>
-  <button class="mnb"    data-s="wordindex" onclick="go('wordindex',this)"><span class="mnb-ic">🔍</span>Words</button>
-</nav>
 <div id="toast"></div>
 
 <script>
@@ -44263,16 +44277,16 @@ function go(sid, el) {
   if (_m) _m.scrollTop = 0;
 }
 
-// Mobile slide-out drawer controls
+// Mobile slide-out drawer controls (the sidebar #sb is the drawer on phones)
 function toggleMenu() {
-  var d = document.getElementById('mnav');
+  var d = document.getElementById('sb');
   var b = document.getElementById('mback');
   if (!d) return;
   var open = d.classList.toggle('open');
   if (b) b.classList.toggle('open', open);
 }
 function closeMenu() {
-  var d = document.getElementById('mnav');
+  var d = document.getElementById('sb');
   var b = document.getElementById('mback');
   if (d) d.classList.remove('open');
   if (b) b.classList.remove('open');
