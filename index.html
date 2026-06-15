@@ -4,35 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>РусскийПуть</title>
-<script>
-/* ── ON-SCREEN ERROR REPORTER (debug aid) ──────────────────
-   Installed before the main script so it can catch parse
-   errors there too. If any JS error occurs on the device,
-   a red banner shows the message + file:line so it can be
-   read off the phone. Remove this block once the app is
-   confirmed working.                                          */
-(function(){
-  function showErr(msg){
-    try{
-      var b=document.getElementById('__jserr');
-      if(!b){
-        b=document.createElement('div');
-        b.id='__jserr';
-        b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#C04040;color:#fff;font:12px/1.4 monospace;padding:8px 12px;white-space:pre-wrap;word-break:break-word;max-height:50vh;overflow:auto;';
-        (document.body||document.documentElement).appendChild(b);
-      }
-      b.textContent='JS ERROR:\n'+msg;
-    }catch(_){}
-  }
-  window.addEventListener('error',function(e){
-    var m=(e.message||'error')+'\n'+(e.filename||'')+' :'+(e.lineno||'?')+':'+(e.colno||'?');
-    showErr(m);
-  });
-  window.addEventListener('unhandledrejection',function(e){
-    showErr('Promise: '+((e.reason&&e.reason.message)||e.reason||'rejection'));
-  });
-})();
-</script>
 <style>
 :root{
   --bg:#F7F5F0;--bg2:#EEEAE2;--bg3:#E4DFD4;
@@ -44,6 +15,7 @@
   --gd:#C07820;--gdl:#FDF3E3;
   --pu:#6B52B8;--pul:#EEEDFE;
   --r:12px;--rs:8px;
+  --mtop-h:48px; /* height of the fixed mobile top bar */
   --font:'Segoe UI',system-ui,-apple-system,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -59,8 +31,8 @@ button{font-family:var(--font);cursor:pointer;}
   #mnav{display:none!important;}
 }
 #sb{background:var(--card);border-right:1px solid var(--border);}
-#main{flex:1;padding-bottom:62px;}
-@media(min-width:860px){#main{padding-bottom:0;}}
+#main{flex:1;padding-top:var(--mtop-h);}
+@media(min-width:860px){#main{padding-top:0;}}
 
 /* ── SIDEBAR ── */
 .logo{padding:16px 18px;border-bottom:1px solid var(--border);}
@@ -138,7 +110,8 @@ button{font-family:var(--font);cursor:pointer;}
 .urow-done{color:var(--gr);font-size:13px;margin-left:4px;}
 
 /* ── LESSON HEADER ── */
-.lhdr{background:var(--card);border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:20;}
+.lhdr{background:var(--card);border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:8px;position:sticky;top:var(--mtop-h);z-index:20;}
+@media(min-width:860px){.lhdr{top:0;}}
 .lback{background:none;border:none;font-size:18px;color:var(--tx2);padding:3px 8px 3px 0;line-height:1;}
 .lhdr-info{flex:1;min-width:0;}
 .lhdr-main{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -413,11 +386,32 @@ button{font-family:var(--font);cursor:pointer;}
 .anki-how{background:var(--gdl);border-radius:var(--rs);padding:11px 13px;font-size:12px;color:var(--gd);line-height:1.7;margin-top:12px;}
 .anki-how b{font-weight:700;}
 
-/* ── MOBILE NAV ── */
-#mnav{display:flex;background:var(--card);border-top:1px solid var(--border);position:fixed;bottom:0;left:0;right:0;z-index:30;}
-.mnb{flex:1;padding:8px 4px 6px;background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--tx3);transition:color .12s;}
-.mnb.on{color:var(--gr);}
-.mnb-ic{font-size:19px;}
+/* ── MOBILE TOP BAR + SLIDE-OUT DRAWER (phone only) ── */
+#mtop{display:flex;align-items:center;gap:6px;background:var(--card);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;height:var(--mtop-h);z-index:40;padding:0 10px;}
+.mtop-burger{background:none;border:none;font-size:22px;line-height:1;color:var(--tx);padding:6px 8px;cursor:pointer;}
+.mtop-title{font-size:16px;font-weight:700;}
+.mtop-title .logo-ru{color:var(--gr);}
+.mtop-mute{margin-left:auto;background:none;border:1px solid var(--border);border-radius:var(--rs);padding:5px 10px;font-size:14px;color:var(--tx3);cursor:pointer;}
+.mtop-mute.muted{background:var(--rdl);border-color:var(--rd);color:var(--rd);}
+
+#mback{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:45;}
+#mback.open{display:block;}
+
+#mnav{position:fixed;top:0;left:0;bottom:0;width:250px;max-width:82vw;background:var(--card);border-right:1px solid var(--border);z-index:50;transform:translateX(-100%);transition:transform .22s ease;overflow-y:auto;display:flex;flex-direction:column;padding:8px 0 16px;box-shadow:2px 0 18px rgba(0,0,0,.14);}
+#mnav.open{transform:translateX(0);}
+.mdrawer-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 12px;border-bottom:1px solid var(--border);margin-bottom:6px;}
+.mdrawer-ttl{font-size:16px;font-weight:700;}
+.mdrawer-ttl .logo-ru{color:var(--gr);}
+.mdrawer-x{background:none;border:none;font-size:20px;color:var(--tx3);cursor:pointer;padding:2px 6px;line-height:1;}
+.mnb{display:flex;align-items:center;gap:12px;width:100%;padding:13px 18px;background:none;border:none;font-size:14px;color:var(--tx2);text-align:left;border-left:3px solid transparent;cursor:pointer;}
+.mnb.on{background:var(--grl);color:var(--gr);border-left-color:var(--gr);font-weight:600;}
+.mnb-ic{font-size:18px;width:22px;text-align:center;}
+
+@media(min-width:860px){
+  #mtop{display:none!important;}
+  #mback{display:none!important;}
+  #mnav{display:none!important;}
+}
 
 /* ── TOAST ── */
 #toast{position:fixed;bottom:68px;left:50%;transform:translateX(-50%) translateY(8px);background:#1A1714;color:#fff;padding:8px 16px;border-radius:18px;font-size:12px;font-weight:500;z-index:100;opacity:0;transition:all .22s;pointer-events:none;white-space:nowrap;}
@@ -769,6 +763,12 @@ button{font-family:var(--font);cursor:pointer;}
 </style>
 </head>
 <body>
+<div id="mtop">
+  <button class="mtop-burger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <div class="mtop-title"><span class="logo-ru">Русский</span>Путь</div>
+  <button class="mtop-mute" id="mtop-mute" onclick="toggleMute()" title="Mute / unmute all sounds">🔊</button>
+</div>
+<div id="mback" onclick="closeMenu()"></div>
 <div id="app">
   <nav id="sb">
     <div class="logo">
@@ -916,6 +916,10 @@ button{font-family:var(--font);cursor:pointer;}
 </div>
 
 <nav id="mnav">
+  <div class="mdrawer-hd">
+    <div class="mdrawer-ttl"><span class="logo-ru">Русский</span>Путь</div>
+    <button class="mdrawer-x" onclick="closeMenu()" aria-label="Close menu">✕</button>
+  </div>
   <button class="mnb on" data-s="dash"     onclick="go('dash',this)"><span class="mnb-ic">🏠</span>Home</button>
   <button class="mnb"    data-s="lesson"   onclick="go('lesson',this)" id="mn-lesson"><span class="mnb-ic">📚</span>Lesson</button>
   <button class="mnb"    data-s="mistakes" onclick="go('mistakes',this)"><span class="mnb-ic">⚠️</span>Mistakes</button>
@@ -44250,7 +44254,28 @@ function go(sid, el) {
   if (sid === 'wordindex') {
     buildWordIndex();
   }
-  window.scrollTo(0, 0);
+  closeMenu();
+  // Reliably jump to the top of the new screen on every device
+  try { window.scrollTo(0, 0); } catch (e) {}
+  if (document.documentElement) document.documentElement.scrollTop = 0;
+  if (document.body) document.body.scrollTop = 0;
+  var _m = document.getElementById('main');
+  if (_m) _m.scrollTop = 0;
+}
+
+// Mobile slide-out drawer controls
+function toggleMenu() {
+  var d = document.getElementById('mnav');
+  var b = document.getElementById('mback');
+  if (!d) return;
+  var open = d.classList.toggle('open');
+  if (b) b.classList.toggle('open', open);
+}
+function closeMenu() {
+  var d = document.getElementById('mnav');
+  var b = document.getElementById('mback');
+  if (d) d.classList.remove('open');
+  if (b) b.classList.remove('open');
 }
 
 // ============================================================
@@ -46090,6 +46115,12 @@ function toast(msg) {
 // ============================================================
 window.MUTED = LS.getItem('rp_muted') === 'true';
 function applyMute() {
+  // Keep the mobile top-bar mute button in sync too
+  var mt = document.getElementById('mtop-mute');
+  if (mt) {
+    mt.textContent = window.MUTED ? '🔇' : '🔊';
+    mt.classList.toggle('muted', !!window.MUTED);
+  }
   const btn = document.getElementById('mute-btn');
   if (!btn) return;
   if (window.MUTED) {
