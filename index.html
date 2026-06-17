@@ -775,6 +775,64 @@ button{font-family:var(--font);cursor:pointer;}
   cursor:pointer;transition:all .15s;
 }
 .lis-slow-btn:hover{ border-color:var(--gr);color:var(--gr); }
+
+/* ── CONVERSATION TUTOR ──────────────────────────────────── */
+#s-tutor .tutor-wrap{ max-width:760px; margin:0 auto; padding:0; }
+.tutor-note{ background:var(--gdl); border:1px solid var(--gd); color:var(--gd); padding:12px 14px; border-radius:var(--rs); margin-bottom:14px; font-size:14px; }
+.tutor-intro{ color:var(--tx2); font-size:15px; line-height:1.5; margin-bottom:18px; }
+.tutor-topics{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.tutor-topic{ background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer; transition:all .14s; text-align:center; }
+.tutor-topic:hover{ border-color:var(--gr); transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,.08); }
+.tutor-topic .tt-ic{ font-size:26px; }
+.tutor-topic .tt-tt{ font-size:15px; font-weight:700; color:var(--tx); font-style:normal; }
+.tutor-topic .tt-en{ font-size:12px; color:var(--tx3); font-style:normal; }
+
+.tutor-chat-hd{ display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid var(--border); margin-bottom:12px; }
+.tutor-back{ background:var(--bg2); border:none; width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer; color:var(--tx); flex-shrink:0; }
+.tutor-chat-title{ font-weight:700; font-size:16px; color:var(--tx); flex:1; font-style:normal; }
+.tutor-spk{ background:var(--bg2); border:none; width:38px; height:38px; border-radius:50%; font-size:17px; cursor:pointer; flex-shrink:0; }
+.tutor-spk.on{ background:var(--grb); }
+
+.tutor-msgs{ min-height:240px; max-height:54vh; overflow-y:auto; padding:6px 2px 12px; display:flex; flex-direction:column; gap:12px; }
+.tb-row{ max-width:84%; }
+.tb-row.bot{ align-self:flex-start; }
+.tb-row.user{ align-self:flex-end; }
+.tb-ru{ font-size:16px; line-height:1.45; padding:11px 14px; border-radius:14px; font-style:normal !important; font-family:var(--font) !important; }
+.tb-row.bot .tb-ru{ background:var(--bg2); color:var(--tx); border-bottom-left-radius:4px; }
+.tb-row.user .tb-ru{ background:var(--gr); color:#fff; border-bottom-right-radius:4px; }
+.tb-say{ background:rgba(0,0,0,.08); border:none; border-radius:6px; padding:1px 5px; cursor:pointer; font-size:12px; margin-left:6px; }
+.tb-hint{ font-size:12.5px; color:var(--tx3); margin-top:4px; padding:0 6px; font-style:normal; }
+.tb-plain{ font-size:14px; color:var(--rd); padding:10px 12px; background:var(--rdl); border-radius:10px; }
+.tb-typing{ letter-spacing:2px; opacity:.6; }
+.tb-correct{ background:var(--gdl); border:1px solid var(--gd); border-radius:10px; padding:9px 12px; margin-bottom:8px; }
+.tb-c-lbl{ font-size:11px; font-weight:700; color:var(--gd); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.tb-c-wrong{ font-size:14px; color:var(--rd); text-decoration:line-through; font-style:normal; }
+.tb-c-fixed{ font-size:15px; color:var(--gr2); font-weight:600; font-style:normal; }
+.tb-c-why{ font-size:12.5px; color:var(--tx2); margin-top:3px; font-style:normal; }
+
+.tutor-input{ display:flex; gap:8px; align-items:center; padding-top:12px; border-top:1px solid var(--border); margin-top:6px; }
+.tutor-mic{ background:var(--bg2); border:none; width:44px; height:44px; border-radius:50%; font-size:19px; cursor:pointer; flex-shrink:0; }
+.tutor-mic.rec{ background:var(--rd); color:#fff; animation:tutorPulse 1s infinite; }
+@keyframes tutorPulse{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+#tutor-text{ flex:1; border:1px solid var(--border); border-radius:22px; padding:11px 16px; font-size:15px; font-family:var(--font); font-style:normal; background:var(--card); color:var(--tx); }
+#tutor-text:focus{ outline:none; border-color:var(--gr); }
+.tutor-send{ background:var(--gr); color:#fff; border:none; width:44px; height:44px; border-radius:50%; font-size:18px; cursor:pointer; flex-shrink:0; }
+
+#tutor-modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:120; align-items:center; justify-content:center; padding:18px; }
+#tutor-modal.on{ display:flex; }
+.tutor-modal-card{ background:var(--card); border-radius:var(--r); padding:22px; max-width:440px; width:100%; }
+.tutor-modal-card h3{ margin:0 0 4px; font-size:18px; color:var(--tx); }
+.tutor-modal-card p{ font-size:13px; color:var(--tx2); margin:0 0 16px; line-height:1.5; }
+.tutor-modal-card label{ display:block; font-size:13px; font-weight:600; color:var(--tx); margin:12px 0 5px; }
+.tutor-modal-card input[type=password],.tutor-modal-card input[type=text]{ width:100%; border:1px solid var(--border); border-radius:var(--rs); padding:10px 12px; font-size:14px; font-family:var(--font); background:var(--bg); color:var(--tx); }
+.tutor-mk-link{ font-size:12px; color:var(--bl); }
+.tutor-remember{ display:flex; align-items:center; gap:7px; margin-top:14px; font-size:13px; color:var(--tx2); }
+.tutor-modal-btns{ display:flex; gap:10px; margin-top:20px; }
+.tutor-modal-btns button{ flex:1; padding:11px; border-radius:var(--rs); border:none; font-size:14px; font-weight:600; cursor:pointer; }
+.tutor-cancel{ background:var(--bg2); color:var(--tx); }
+.tutor-save{ background:var(--gr); color:#fff; }
+.tutor-gear{ margin-left:auto; background:none; border:none; font-size:20px; cursor:pointer; }
+
 </style>
 </head>
 <body>
@@ -803,6 +861,7 @@ button{font-family:var(--font);cursor:pointer;}
       <div class="ni" data-s="anki" onclick="go('anki',this)"><span class="ni-ic">📦</span>Anki Export</div>
       <div class="ni" data-s="grammar" onclick="go('grammar',this)"><span class="ni-ic">📖</span>Grammar Reference</div>
       <div class="ni" data-s="wordindex" onclick="go('wordindex',this)"><span class="ni-ic">🔍</span>Word Index</div>
+    <div class="ni" data-s="tutor" onclick="go('tutor',this)"><span class="ni-ic">💬</span>Conversation Tutor</div>
     </div>
     <div class="nsec" id="sb-topics"></div>
   </nav>
@@ -939,6 +998,37 @@ button{font-family:var(--font);cursor:pointer;}
       </div>
     </div>
 
+    <!-- CONVERSATION TUTOR -->
+    <div id="s-tutor" class="scr">
+      <div class="lhdr">
+        <button class="lback" onclick="go('dash',document.querySelector('[data-s=dash]'))">←</button>
+        <div class="lhdr-info">
+          <div class="lhdr-main">Conversation Tutor</div>
+          <div class="lhdr-sub">Speak &amp; chat in Russian</div>
+        </div>
+        <button class="tutor-gear" onclick="TUTOR.openSettings()" title="API keys">⚙</button>
+      </div>
+      <div class="tutor-wrap">
+        <div id="tutor-body"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="tutor-modal">
+  <div class="tutor-modal-card">
+    <h3>Conversation Tutor — API keys</h3>
+    <p>The tutor uses Google Gemini (free tier) first, then falls back to Anthropic if Gemini is rate-limited. Keys stay in your browser only. Get a free Gemini key at <span class="tutor-mk-link">aistudio.google.com/apikey</span>.</p>
+    <label>Google Gemini key (free)</label>
+    <input id="tutor-k-gemini" type="password" placeholder="AIza…">
+    <label>Anthropic key (optional backup)</label>
+    <input id="tutor-k-anthropic" type="password" placeholder="sk-ant-…">
+    <label class="tutor-remember"><input id="tutor-remember" type="checkbox"> Remember keys on this device</label>
+    <div class="tutor-modal-btns">
+      <button class="tutor-cancel" onclick="TUTOR.closeSettings()">Cancel</button>
+      <button class="tutor-save" onclick="TUTOR.saveSettings()">Save</button>
+    </div>
   </div>
 </div>
 
@@ -2280,6 +2370,14 @@ const CURRICULUM = {
       desc: 'до перекрёстка, мимо светофора, за углом',
       status: 'locked',
       unlockAfter: 'dir_1a'
+    }, {
+      id: 'dir_A1a',
+      code: 'A1a',
+      level: 'A2',
+      grammarFocus: 'Direction adjectives',
+      desc: 'прямой, левый, правый, ближайший, дальний',
+      status: 'locked',
+      unlockAfter: 'dir_1a'
     }]
   }, {
     id: 'ordering',
@@ -2308,6 +2406,14 @@ const CURRICULUM = {
       desc: 'в меню, со счётом, без чаевых, на первое',
       status: 'locked',
       unlockAfter: 'ord_1a'
+    }, {
+      id: 'ord_A1a',
+      code: 'A1a',
+      level: 'A2',
+      grammarFocus: 'Food adjectives',
+      desc: 'свежий, горячий, вкусный, острый, вегетарианский',
+      status: 'locked',
+      unlockAfter: 'ord_1a'
     }]
   }, {
     id: 'tech',
@@ -2326,6 +2432,14 @@ const CURRICULUM = {
       level: 'A1p',
       grammarFocus: 'Tech verbs — present',
       desc: 'скачать, отправить, зарегистрироваться, загрузить',
+      status: 'locked',
+      unlockAfter: 'tch_1a'
+    }, {
+      id: 'tch_A1a',
+      code: 'A1a',
+      level: 'A2',
+      grammarFocus: 'Tech adjectives — gender',
+      desc: 'быстрый/ая, удобный/ая, цифровой/ая, беспроводной',
       status: 'locked',
       unlockAfter: 'tch_1a'
     }]
@@ -2354,6 +2468,14 @@ const CURRICULUM = {
       level: 'A2',
       grammarFocus: 'History adjectives',
       desc: 'исторический, знаменитый, древний, великий',
+      status: 'locked',
+      unlockAfter: 'hist_1a'
+    }, {
+      id: 'hist_V1a',
+      code: 'V1a',
+      level: 'A2',
+      grammarFocus: 'History verbs — past',
+      desc: 'править, воевать, победить, основать, освободить',
       status: 'locked',
       unlockAfter: 'hist_1a'
     }]
@@ -2432,6 +2554,14 @@ const CURRICULUM = {
       desc: 'высокий/ая, низкий/ая, худой/ая, стройный/ая',
       status: 'locked',
       unlockAfter: 'bdy_1a'
+    }, {
+      id: 'bdy_V1a',
+      code: 'V1a',
+      level: 'A1p',
+      grammarFocus: 'Gesture verbs — present',
+      desc: 'улыбаться, обнимать, кивать, махать, хмуриться',
+      status: 'locked',
+      unlockAfter: 'bdy_1a'
     }]
   }, {
     id: 'science',
@@ -2452,6 +2582,42 @@ const CURRICULUM = {
       desc: 'природный/ая, дикий/ая, редкий/ая, вымирающий',
       status: 'locked',
       unlockAfter: 'sci_1a'
+    }, {
+      id: 'sci_V1a',
+      code: 'V1a',
+      level: 'A2',
+      grammarFocus: 'Science verbs — present',
+      desc: 'изучать, исследовать, открывать, наблюдать, расти',
+      status: 'locked',
+      unlockAfter: 'sci_1a'
+    }]
+  }, {
+    id: 'idioms',
+    icon: '💬',
+    title: 'Idioms & Sayings',
+    units: [{
+      id: 'idm_1a',
+      code: '1a',
+      level: 'A2',
+      grammarFocus: 'Everyday idioms',
+      desc: 'ни пуха ни пера, всё в порядке, не за что, договорились',
+      status: 'available'
+    }, {
+      id: 'idm_2a',
+      code: '2a',
+      level: 'A2',
+      grammarFocus: 'Proverbs — народная мудрость',
+      desc: 'Тише едешь — дальше будешь, Без труда не вытащишь рыбку',
+      status: 'locked',
+      unlockAfter: 'idm_1a'
+    }, {
+      id: 'idm_3a',
+      code: '3a',
+      level: 'A2',
+      grammarFocus: 'Colloquial expressions',
+      desc: 'круто, без проблем, ничего себе, как-то так, давай',
+      status: 'locked',
+      unlockAfter: 'idm_2a'
     }]
   }],
   // ── UNLOCK LOGIC ──
@@ -37776,7 +37942,88 @@ const ORDERING_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'ord_A1a', topicId:'ordering', code:'A1a', title:'Food Ordering',
+  grammarFocus:'Food adjectives — свежий, горячий, вкусный, острый',
+  level:'A2', desc:'свежий/ая, горячий/ая, вкусный/ая, острый/ая, вегетарианский',
+  icon:'🍽️', wordType:'adjective', unlockAfter:'ord_1a',
+  words:[
+    {
+      ru:'свежий', en:'fresh (m)', pos:'adjective',
+      forms:{singular:{nom:'свежий (m) / свежая (f) / свежее (n)',gen:'свежего (m) / свежей (f)',dat:'свежему (m) / свежей (f)',acc:'свежего (m) / свежую (f)',inst:'свежим (m) / свежей (f)',prep:'свежем (m) / свежей (f)'},plural:{nom:'свежие',gen:'свежих',dat:'свежим',acc:'свежих',inst:'свежими',prep:'свежих'}},
+      focusForms:['nom_sg'],
+      example:'Свежий хлеб.', exampleEn:'Fresh bread.',
+      formExamples:{nom_sg:{ru:'Свежая рыба.',en:'Fresh fish.',focus:true},nom_sg2:{ru:'Свежие овощи.',en:'Fresh vegetables.',focus:true}},
+      grammar:'свежий/-ая/-ее (soft adjective — note -ее in neuter). свежий also = fresh news, fresh air (свежий воздух). Opposite: несвежий (stale), чёрствый (stale, of bread).',
+      tip:'💡 "Свежий воздух" (fresh air) — Russians value it highly. "Подышать свежим воздухом" (to get some fresh air). свежий also: свежие новости (latest news), на свежую голову (with a fresh/clear head).'
+    },
+    {
+      ru:'горячий', en:'hot (of food/drink) (m)', pos:'adjective',
+      forms:{singular:{nom:'горячий (m) / горячая (f) / горячее (n)',gen:'горячего (m) / горячей (f)',dat:'горячему (m) / горячей (f)',acc:'горячего (m) / горячую (f)',inst:'горячим (m) / горячей (f)',prep:'горячем (m) / горячей (f)'},plural:{nom:'горячие',gen:'горячих',dat:'горячим',acc:'горячих',inst:'горячими',prep:'горячих'}},
+      focusForms:['nom_sg'],
+      example:'Горячий чай.', exampleEn:'Hot tea.',
+      formExamples:{nom_sg:{ru:'Горячий суп.',en:'Hot soup.',focus:true},nom_sg2:{ru:'Горячее блюдо.',en:'A hot dish (main course).',focus:true}},
+      grammar:'горячий (hot to the touch — food, water) vs жаркий (hot weather). Don\'t mix them! горячее (as a noun) = the hot main course. "Что на горячее?" (What\'s for the main course?).',
+      tip:'💡 горячий (hot food/water) vs жаркий (hot weather). "Горячий чай" (hot tea) but "жаркий день" (hot day). Using горячий for weather is a classic learner mistake — Russians never do it.'
+    },
+    {
+      ru:'вкусный', en:'tasty / delicious (m)', pos:'adjective',
+      forms:{singular:{nom:'вкусный (m) / вкусная (f) / вкусное (n)',gen:'вкусного (m) / вкусной (f)',dat:'вкусному (m) / вкусной (f)',acc:'вкусного (m) / вкусную (f)',inst:'вкусным (m) / вкусной (f)',prep:'вкусном (m) / вкусной (f)'},plural:{nom:'вкусные',gen:'вкусных',dat:'вкусным',acc:'вкусных',inst:'вкусными',prep:'вкусных'}},
+      focusForms:['nom_sg'],
+      example:'Очень вкусный борщ!', exampleEn:'Very tasty borsch!',
+      formExamples:{nom_sg:{ru:'Вкусная еда.',en:'Tasty food.',focus:true},nom_sg2:{ru:'Вкусное мороженое.',en:'Delicious ice cream.',focus:true}},
+      grammar:'вкусный from вкус (taste). вкусно (adverb): "Как вкусно!" (How delicious!). "Очень вкусно!" is the standard compliment to a cook — say it and any Russian host beams.',
+      tip:'💡 "Очень вкусно! Спасибо!" (Very tasty! Thank you!) — the magic words to delight any Russian host. Russian hospitality revolves around food, so complimenting вкусно is deeply appreciated.'
+    },
+    {
+      ru:'острый', en:'spicy / sharp (m)', pos:'adjective',
+      forms:{singular:{nom:'острый (m) / острая (f) / острое (n)',gen:'острого (m) / острой (f)',dat:'острому (m) / острой (f)',acc:'острого (m) / острую (f)',inst:'острым (m) / острой (f)',prep:'остром (m) / острой (f)'},plural:{nom:'острые',gen:'острых',dat:'острым',acc:'острых',inst:'острыми',prep:'острых'}},
+      focusForms:['nom_sg'],
+      example:'Это блюдо острое?', exampleEn:'Is this dish spicy?',
+      formExamples:{nom_sg:{ru:'Острый соус.',en:'Spicy sauce.',focus:true},nom_sg2:{ru:'Острая еда.',en:'Spicy food.',focus:true}},
+      grammar:'острый = spicy (food) AND sharp (knife, mind). острый нож (sharp knife), острый ум (sharp mind), острая еда (spicy food). "Не острое, пожалуйста" (Not spicy, please) — useful when ordering.',
+      tip:'💡 "Это острое?" (Is this spicy?) and "Не очень острое, пожалуйста" (Not too spicy, please) — handy when ordering. Traditional Russian food is rarely very spicy, so острый often means mildly so.'
+    },
+    {
+      ru:'вегетарианский', en:'vegetarian (m)', pos:'adjective',
+      forms:{singular:{nom:'вегетарианский (m) / вегетарианская (f) / вегетарианское (n)',gen:'вегетарианского (m) / вегетарианской (f)',dat:'вегетарианскому (m) / вегетарианской (f)',acc:'вегетарианского (m) / вегетарианскую (f)',inst:'вегетарианским (m) / вегетарианской (f)',prep:'вегетарианском (m) / вегетарианской (f)'},plural:{nom:'вегетарианские',gen:'вегетарианских',dat:'вегетарианским',acc:'вегетарианских',inst:'вегетарианскими',prep:'вегетарианских'}},
+      focusForms:['nom_sg'],
+      example:'Есть вегетарианское меню?', exampleEn:'Is there a vegetarian menu?',
+      formExamples:{nom_sg:{ru:'Вегетарианское блюдо.',en:'A vegetarian dish.',focus:true}},
+      grammar:'вегетарианец (m vegetarian), вегетарианка (f), веган (vegan). "Я вегетарианец/вегетарианка" (I\'m a vegetarian). During Православный пост (Orthodox fasting) much food is naturally vegetarian (постное).',
+      tip:'💡 During Православный пост (Orthodox Lent/fasting periods), Russians eat постная еда (Lenten food — no meat/dairy), which is effectively vegetarian. Many cafés mark постное dishes — useful for vegetarians.'
+    },
+  ],
+  story:{
+    title:'Заказ в ресторане / Ordering at a Restaurant',
+    sentences:[
+      {ru:'— Что у вас свежее сегодня?',en:'— What is fresh today?'},
+      {ru:'— Свежая рыба и горячий борщ.',en:'— Fresh fish and hot borsch.'},
+      {ru:'— Борщ острый?',en:'— Is the borsch spicy?'},
+      {ru:'— Нет, не острый. Очень вкусный!',en:'— No, not spicy. Very tasty!'},
+      {ru:'— А есть вегетарианское блюдо?',en:'— And is there a vegetarian dish?'},
+    ],
+    questions:[
+      {q:'What is fresh today?',opts:['Bread and soup','Fresh fish and hot borsch','Vegetables','Meat'],ans:1},
+      {q:'Is the borsch spicy?',opts:['Very spicy','A little','No, not spicy','Unknown'],ans:2},
+      {q:'What does the customer ask for last?',opts:['A spicy dish','A hot dish','A fresh dish','A vegetarian dish'],ans:3},
+    ]
+  },
+  conversation:{
+    topic:'Describing food when ordering',
+    speakers:['Гость','Официант'],
+    lines:[
+      {sp:'Гость',ru:'Что посоветуете? Хочу что-то вкусное.',en:'What do you recommend? I want something tasty.',blank:false},
+      {sp:'Официант',ru:'Свежая рыба сегодня очень хорошая.',en:'The fresh fish is very good today.',blank:true,opts:['Свежая рыба сегодня очень хорошая.','Нет.','Пока!']},
+      {sp:'Гость',ru:'Она острая?',en:'Is it spicy?',blank:false},
+      {sp:'Официант',ru:'Нет, совсем не острая.',en:'No, not spicy at all.',blank:false},
+      {sp:'Гость',ru:'А есть вегетарианское блюдо?',en:'And is there a vegetarian dish?',blank:true,opts:['А есть вегетарианское блюдо?','Нет.','Пока!']},
+      {sp:'Официант',ru:'Да! И горячий овощной суп.',en:'Yes! And a hot vegetable soup.',blank:false},
+    ]
+  }
+}
+];
 window.ORDERING_UNITS = ORDERING_UNITS;
 const DIRECTION_UNITS = [{
   id: 'dir_1a',
@@ -38418,7 +38665,88 @@ const DIRECTION_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'dir_A1a', topicId:'directions', code:'A1a', title:'Advanced Directions',
+  grammarFocus:'Direction adjectives — прямой, левый, правый, ближайший',
+  level:'A2', desc:'прямой/ая, левый/ая, правый/ая, ближайший/ая, дальний/яя',
+  icon:'🗺️', wordType:'adjective', unlockAfter:'dir_1a',
+  words:[
+    {
+      ru:'прямой', en:'straight / direct (m)', pos:'adjective',
+      forms:{singular:{nom:'прямой (m) / прямая (f) / прямое (n)',gen:'прямого (m) / прямой (f)',dat:'прямому (m) / прямой (f)',acc:'прямого (m) / прямую (f)',inst:'прямым (m) / прямой (f)',prep:'прямом (m) / прямой (f)'},plural:{nom:'прямые',gen:'прямых',dat:'прямым',acc:'прямых',inst:'прямыми',prep:'прямых'}},
+      focusForms:['nom_sg'],
+      example:'Прямая дорога.', exampleEn:'A straight road.',
+      formExamples:{nom_sg:{ru:'Прямой путь.',en:'A direct route.',focus:true},nom_sg2:{ru:'Прямая линия.',en:'A straight line.',focus:true}},
+      grammar:'прямой (straight, direct) → прямо (adverb: straight ahead) — the key direction word: "Идите прямо!" (Go straight!). прямой also: прямой эфир (live broadcast), прямой человек (a direct/frank person).',
+      tip:'💡 "Идите прямо" (Go straight ahead) — прямо is THE first direction word to learn. прямой also means frank/direct: "Он прямой человек" (He\'s a straightforward person). прямо often also = "right now/exactly".'
+    },
+    {
+      ru:'левый', en:'left (m)', pos:'adjective',
+      forms:{singular:{nom:'левый (m) / левая (f) / левое (n)',gen:'левого (m) / левой (f)',dat:'левому (m) / левой (f)',acc:'левого (m) / левую (f)',inst:'левым (m) / левой (f)',prep:'левом (m) / левой (f)'},plural:{nom:'левые',gen:'левых',dat:'левым',acc:'левых',inst:'левыми',prep:'левых'}},
+      focusForms:['nom_sg'],
+      example:'Поверните на левую сторону.', exampleEn:'Turn to the left side.',
+      formExamples:{nom_sg:{ru:'Левый поворот.',en:'A left turn.',focus:true},nom_sg2:{ru:'Левая рука.',en:'The left hand.',focus:true}},
+      grammar:'левый → налево (adverb: to the left), слева (on the left). "Поверните налево" (Turn left). левый also colloquial: "левый товар" (dodgy/illicit goods), "левые деньги" (money on the side).',
+      tip:'💡 налево (turn left), направо (turn right), слева (on the left), справа (on the right). Note: левый colloquially means "dodgy/fake" — "левый сайт" (a sketchy website). Context tells you which.'
+    },
+    {
+      ru:'правый', en:'right (m)', pos:'adjective',
+      forms:{singular:{nom:'правый (m) / правая (f) / правое (n)',gen:'правого (m) / правой (f)',dat:'правому (m) / правой (f)',acc:'правого (m) / правую (f)',inst:'правым (m) / правой (f)',prep:'правом (m) / правой (f)'},plural:{nom:'правые',gen:'правых',dat:'правым',acc:'правых',inst:'правыми',prep:'правых'}},
+      focusForms:['nom_sg'],
+      example:'Магазин на правой стороне.', exampleEn:'The shop is on the right side.',
+      formExamples:{nom_sg:{ru:'Правый поворот.',en:'A right turn.',focus:true},nom_sg2:{ru:'Правая рука.',en:'The right hand.',focus:true}},
+      grammar:'правый → направо (to the right), справа (on the right). Note: правый shares its root with правильный (correct) and право (right/law) — "right" as direction and as correctness, like English!',
+      tip:'💡 правый (right side) shares a root with правильный (correct) and право (a right/law) — just like English "right" means both direction and correctness. "Правая рука" (right hand) = also a trusted helper.'
+    },
+    {
+      ru:'ближайший', en:'nearest / closest (m)', pos:'adjective',
+      forms:{singular:{nom:'ближайший (m) / ближайшая (f) / ближайшее (n)',gen:'ближайшего (m) / ближайшей (f)',dat:'ближайшему (m) / ближайшей (f)',acc:'ближайшего (m) / ближайшую (f)',inst:'ближайшим (m) / ближайшей (f)',prep:'ближайшем (m) / ближайшей (f)'},plural:{nom:'ближайшие',gen:'ближайших',dat:'ближайшим',acc:'ближайших',inst:'ближайшими',prep:'ближайших'}},
+      focusForms:['nom_sg'],
+      example:'Где ближайшая станция метро?', exampleEn:'Where is the nearest metro station?',
+      formExamples:{nom_sg:{ru:'Ближайший магазин.',en:'The nearest shop.',focus:true}},
+      grammar:'ближайший — superlative of близкий (near). "Где ближайший...?" (Where is the nearest...?) is the most useful navigation question. Also temporal: в ближайшее время (in the near future).',
+      tip:'💡 "Где ближайший банкомат / магазин / туалет?" (Where is the nearest ATM / shop / toilet?) — ближайший is your survival word for getting around. в ближайшем будущем = in the near future.'
+    },
+    {
+      ru:'дальний', en:'far / distant (m)', pos:'adjective',
+      forms:{singular:{nom:'дальний (m) / дальняя (f) / дальнее (n)',gen:'дальнего (m) / дальней (f)',dat:'дальнему (m) / дальней (f)',acc:'дальнего (m) / дальнюю (f)',inst:'дальним (m) / дальней (f)',prep:'дальнем (m) / дальней (f)'},plural:{nom:'дальние',gen:'дальних',dat:'дальним',acc:'дальних',inst:'дальними',prep:'дальних'}},
+      focusForms:['nom_sg'],
+      example:'Это дальний район.', exampleEn:'That\'s a distant district.',
+      formExamples:{nom_sg:{ru:'Дальняя дорога.',en:'A long journey.',focus:true}},
+      grammar:'дальний (far) — soft adjective (-ний). Opposite of ближний (near). Дальний Восток (the Far East — Russia\'s eastern region). дальний родственник (distant relative). дальняя дорога (a long road/journey).',
+      tip:'💡 Дальний Восток (the Far East) — Russia\'s vast eastern region (Vladivostok etc). "Дальняя дорога" (a long journey) appears in fortune-telling clichés: "Вас ждёт дальняя дорога" (A long journey awaits you).'
+    },
+  ],
+  story:{
+    title:'Поиск дороги / Finding the Way',
+    sentences:[
+      {ru:'— Где ближайшая станция метро?',en:'— Where is the nearest metro station?'},
+      {ru:'— Идите прямо до перекрёстка.',en:'— Go straight to the crossroads.'},
+      {ru:'— Потом налево или направо?',en:'— Then left or right?'},
+      {ru:'— На правую сторону, потом прямо.',en:'— To the right side, then straight.'},
+      {ru:'— А дальний выход тоже работает?',en:'— And does the far exit work too?'},
+    ],
+    questions:[
+      {q:'What is the person looking for?',opts:['A shop','The nearest metro station','A hotel','A restaurant'],ans:1},
+      {q:'Which way first?',opts:['Left','Right','Straight to the crossroads','Back'],ans:2},
+      {q:'Which side do they turn to?',opts:['Left','Right','Neither','Both'],ans:1},
+    ]
+  },
+  conversation:{
+    topic:'Giving directions with adjectives',
+    speakers:['Турист','Местный'],
+    lines:[
+      {sp:'Турист',ru:'Где ближайшая аптека?',en:'Where is the nearest pharmacy?',blank:false},
+      {sp:'Местный',ru:'Идите прямо, потом направо.',en:'Go straight, then right.',blank:true,opts:['Идите прямо, потом направо.','Нет.','Пока!']},
+      {sp:'Турист',ru:'Это далеко?',en:'Is it far?',blank:false},
+      {sp:'Местный',ru:'Нет, на правой стороне улицы.',en:'No, on the right side of the street.',blank:false},
+      {sp:'Турист',ru:'А не на левой?',en:'And not on the left?',blank:true,opts:['А не на левой?','Нет.','Пока!']},
+      {sp:'Местный',ru:'Нет, точно на правой. Прямой путь!',en:'No, definitely on the right. A direct route!',blank:false},
+    ]
+  }
+}
+];
 window.DIRECTION_UNITS = DIRECTION_UNITS;
 
 // ── wth_2a, dir_2a, ord_2a, tch_1a, tch_V1a ─────────────────────
@@ -39999,7 +40327,102 @@ const TECH_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'tch_A1a', topicId:'tech', code:'A1a', title:'Tech & Internet',
+  grammarFocus:'Tech adjectives — быстрый, удобный, цифровой, беспроводной',
+  level:'A2', desc:'быстрый/ая, удобный/ая, цифровой/ая, беспроводной/ая, онлайн',
+  icon:'📱', wordType:'adjective', unlockAfter:'tch_1a',
+  words:[
+    {
+      ru:'удобный', en:'convenient / comfortable (m)', pos:'adjective',
+      forms:{singular:{nom:'удобный (m) / удобная (f) / удобное (n)',gen:'удобного (m) / удобной (f)',dat:'удобному (m) / удобной (f)',acc:'удобного (m) / удобную (f)',inst:'удобным (m) / удобной (f)',prep:'удобном (m) / удобной (f)'},plural:{nom:'удобные',gen:'удобных',dat:'удобным',acc:'удобных',inst:'удобными',prep:'удобных'}},
+      focusForms:['nom_sg'],
+      example:'Удобное приложение.', exampleEn:'A convenient app.',
+      formExamples:{
+        nom_sg:{ru:'Удобный сайт.',en:'A convenient website.',focus:true},
+        nom_sg:{ru:'Удобная программа.',en:'A convenient program.',focus:true},
+      },
+      grammar:'удобный/-ая/-ое. удобно (conveniently/comfortably — adverb). "Мне удобно" (it\'s convenient for me — dative + impersonal). Opposite: неудобный (inconvenient/awkward).',
+      tip:'💡 "Когда вам удобно?" (When is convenient for you?) — essential for scheduling. удобно covers both physical comfort (удобный стул — comfy chair) and convenience (удобное время).'
+    },
+    {
+      ru:'цифровой', en:'digital (m)', pos:'adjective',
+      forms:{singular:{nom:'цифровой (m) / цифровая (f) / цифровое (n)',gen:'цифрового (m) / цифровой (f)',dat:'цифровому (m) / цифровой (f)',acc:'цифрового (m) / цифровую (f)',inst:'цифровым (m) / цифровой (f)',prep:'цифровом (m) / цифровой (f)'},plural:{nom:'цифровые',gen:'цифровых',dat:'цифровым',acc:'цифровых',inst:'цифровыми',prep:'цифровых'}},
+      focusForms:['nom_sg'],
+      example:'Цифровые технологии.', exampleEn:'Digital technologies.',
+      formExamples:{
+        nom_sg:{ru:'Цифровой мир.',en:'The digital world.',focus:true},
+        nom_sg:{ru:'Цифровая подпись.',en:'A digital signature.',focus:true},
+      },
+      grammar:'цифровой from цифра (digit/number). цифровая экономика (digital economy), цифровые технологии. Opposite: аналоговый (analogue). "Госуслуги" — Russia\'s digital government services portal.',
+      tip:'💡 Госуслуги (gosuslugi.ru) — Russia\'s digital government services portal where citizens handle documents, payments, appointments online. Russia is highly digitalised in everyday bureaucracy.'
+    },
+    {
+      ru:'беспроводной', en:'wireless (m)', pos:'adjective',
+      forms:{singular:{nom:'беспроводной (m) / беспроводная (f) / беспроводное (n)',gen:'беспроводного (m) / беспроводной (f)',dat:'беспроводному (m) / беспроводной (f)',acc:'беспроводного (m) / беспроводную (f)',inst:'беспроводным (m) / беспроводной (f)',prep:'беспроводном (m) / беспроводной (f)'},plural:{nom:'беспроводные',gen:'беспроводных',dat:'беспроводным',acc:'беспроводных',inst:'беспроводными',prep:'беспроводных'}},
+      focusForms:['nom_sg'],
+      example:'Беспроводные наушники.', exampleEn:'Wireless headphones.',
+      formExamples:{
+        nom_sg:{ru:'Беспроводной интернет.',en:'Wireless internet.',focus:true},
+      },
+      grammar:'беспроводной = без (without) + провод (wire) + -ной. Literally "without-wire". беспроводная зарядка (wireless charging), беспроводные наушники (wireless earbuds). Transparent compound.',
+      tip:'💡 беспроводной breaks down as без+провод+ной = "without-wire-y". Russian builds tech words from native roots: провод (wire), so беспроводной (wireless). Logical and transparent.'
+    },
+    {
+      ru:'быстрый', en:'fast / quick (m)', pos:'adjective',
+      forms:{singular:{nom:'быстрый (m) / быстрая (f) / быстрое (n)',gen:'быстрого (m) / быстрой (f)',dat:'быстрому (m) / быстрой (f)',acc:'быстрого (m) / быструю (f)',inst:'быстрым (m) / быстрой (f)',prep:'быстром (m) / быстрой (f)'},plural:{nom:'быстрые',gen:'быстрых',dat:'быстрым',acc:'быстрых',inst:'быстрыми',prep:'быстрых'}},
+      focusForms:['nom_sg'],
+      example:'Быстрый интернет.', exampleEn:'Fast internet.',
+      formExamples:{
+        nom_sg:{ru:'Быстрая загрузка.',en:'Fast loading/download.',focus:true},
+        nom_sg:{ru:'Быстрое подключение.',en:'A fast connection.',focus:true},
+      },
+      grammar:'быстрый/-ая/-ое. быстро (quickly — adverb). быстрее (faster — comparative). "Быстрый интернет" is everyone\'s wish. скорость (speed — noun). высокоскоростной (high-speed).',
+      tip:'💡 "Интернет тормозит" (The internet is lagging/slow) — тормозить literally "to brake". When your connection is slow, Russians say it "brakes". "Всё тормозит!" (Everything\'s lagging!).'
+    },
+    {
+      ru:'онлайн', en:'online (indeclinable)', pos:'adjective/adverb (indeclinable)',
+      forms:{singular:{nom:'онлайн',gen:'онлайн',dat:'онлайн',acc:'онлайн',inst:'онлайн',prep:'онлайн'},plural:{nom:'онлайн',gen:'онлайн',dat:'онлайн',acc:'онлайн',inst:'онлайн',prep:'онлайн'}},
+      focusForms:['nom_sg'],
+      example:'Онлайн-обучение очень удобно.', exampleEn:'Online learning is very convenient.',
+      formExamples:{
+        nom_sg:{ru:'Онлайн-магазин.',en:'An online shop.',focus:true},
+        nom_sg:{ru:'Работать онлайн.',en:'To work online.',focus:true},
+      },
+      grammar:'онлайн — indeclinable borrowing. Used as adjective (онлайн-магазин, with hyphen) and adverb (работать онлайн). Opposite: офлайн (offline). "Я онлайн" (I\'m online).',
+      tip:'💡 онлайн-/офлайн- compounds use a hyphen: онлайн-курс (online course), онлайн-оплата (online payment), офлайн-магазин (physical shop). Both words are common in modern Russian.'
+    },
+  ],
+  story:{
+    title:'Современные технологии / Modern Technology',
+    sentences:[
+      {ru:'Быстрый интернет — это удобно.',en:'Fast internet is convenient.'},
+      {ru:'Беспроводные наушники везде популярны.',en:'Wireless headphones are popular everywhere.'},
+      {ru:'Цифровой мир меняет жизнь.',en:'The digital world changes life.'},
+      {ru:'Онлайн-покупки экономят время.',en:'Online shopping saves time.'},
+      {ru:'Технологии делают жизнь удобной.',en:'Technology makes life convenient.'},
+    ],
+    questions:[
+      {q:'How is fast internet described?',opts:['Expensive','Convenient','Rare','Slow'],ans:1},
+      {q:'What changes life?',opts:['Wireless headphones','The digital world','Online shopping','Fast internet'],ans:1},
+      {q:'What do online purchases save?',opts:['Money','Energy','Time','Space'],ans:2},
+    ]
+  },
+  conversation:{
+    topic:'Discussing tech preferences with adjectives',
+    speakers:['Лена','Макс'],
+    lines:[
+      {sp:'Лена',ru:'Макс, у тебя быстрый интернет?',en:'Max, do you have fast internet?',blank:false},
+      {sp:'Макс',ru:'Да! И удобное приложение для работы.',en:'Yes! And a convenient work app.',blank:true,opts:['Да! И удобное приложение для работы.','Нет.','Пока!']},
+      {sp:'Лена',ru:'У тебя беспроводные наушники?',en:'Do you have wireless headphones?',blank:false},
+      {sp:'Макс',ru:'Конечно. Всё цифровое сейчас.',en:'Of course. Everything is digital now.',blank:false},
+      {sp:'Лена',ru:'Ты работаешь онлайн?',en:'Do you work online?',blank:true,opts:['Ты работаешь онлайн?','Нет.','Пока!']},
+      {sp:'Макс',ru:'Да, это очень удобно!',en:'Yes, it\'s very convenient!',blank:false},
+    ]
+  }
+}
+];
 window.TECH_UNITS = TECH_UNITS;
 
 // ── RUSSIAN HISTORY: hist_1a, hist_2a, hist_A1a ──────────────────
@@ -41026,7 +41449,88 @@ const HISTORY_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'hist_V1a', topicId:'history', code:'V1a', title:'Russian History',
+  grammarFocus:'History verbs — past tense (править, воевать, основать)',
+  level:'A2', desc:'править, воевать, победить, основать, освободить, завоевать',
+  icon:'🏛️', wordType:'verb', unlockAfter:'hist_1a',
+  words:[
+    {
+      ru:'править', en:'to rule / to govern (impf)', pos:'verb (impf, 2nd conj)',
+      forms:{present:{'я':'правлю','ты':'правишь','он/она':'правит','мы':'правим','вы':'правите','они':'правят'},past:{'м (он)':'правил','ж (она)':'правила','н (оно)':'правило','мн (они)':'правили'},imperative:{'ты':'правь','вы':'правьте'}},
+      focusForms:['past_м (он)','past_ж (она)'],
+      example:'Пётр Первый правил Россией.', exampleEn:'Peter the First ruled Russia.',
+      formExamples:{'past_м (он)':{ru:'Царь правил страной.',en:'The tsar ruled the country.',focus:true},'past_ж (она)':{ru:'Екатерина правила долго.',en:'Catherine ruled for a long time.',focus:true}},
+      grammar:'править + instrumental (to rule over something): править страной, править Россией. правитель (ruler — noun). правление (reign/rule). Note: instrumental, not accusative — you rule "with/by" the country in Russian logic.',
+      tip:'💡 править + instrumental: "править страной" (rule the country), not accusative. Many "rule/lead/manage" verbs take instrumental: управлять, руководить, командовать. The thing ruled is in the instrumental case.'
+    },
+    {
+      ru:'воевать', en:'to wage war / to fight (impf)', pos:'verb (impf, 1st conj)',
+      forms:{present:{'я':'воюю','ты':'воюешь','он/она':'воюет','мы':'воюем','вы':'воюете','они':'воюют'},past:{'м (он)':'воевал','ж (она)':'воевала','н (оно)':'воевало','мн (они)':'воевали'},imperative:{'ты':'воюй','вы':'воюйте'}},
+      focusForms:['past_м (он)','past_мн (они)'],
+      example:'Страны воевали много лет.', exampleEn:'The countries fought for many years.',
+      formExamples:{'past_м (он)':{ru:'Мой дед воевал.',en:'My grandfather fought (in the war).',focus:true},'past_мн (они)':{ru:'Они воевали за свободу.',en:'They fought for freedom.',focus:true}},
+      grammar:'воевать from война (war). воевать с + instrumental (to fight against), воевать за + accusative (to fight for). "Мой дед воевал" (My grandfather fought) — a phrase heard in every Russian family about WWII.',
+      tip:'💡 "Мой дед воевал" (My grandfather fought in the war) — almost every Russian family has this WWII connection. Said with deep pride and emotion, especially around 9 мая (Victory Day).'
+    },
+    {
+      ru:'победить', en:'to win / to defeat (perf)', pos:'verb (perf, 2nd conj)',
+      forms:{present:{'я':'(нет формы)','ты':'победишь','он/она':'победит','мы':'победим','вы':'победите','они':'победят'},past:{'м (он)':'победил','ж (она)':'победила','н (оно)':'победило','мн (они)':'победили'},imperative:{'ты':'победи','вы':'победите'}},
+      focusForms:['past_м (он)','past_мн (они)'],
+      example:'Народ победил в войне.', exampleEn:'The people won the war.',
+      formExamples:{'past_м (он)':{ru:'Он победил врага.',en:'He defeated the enemy.',focus:true},'past_мн (они)':{ru:'Они победили в 1945 году.',en:'They won in 1945.',focus:true}},
+      grammar:'победить (perf) / побеждать (impf). Famous quirk: победить has NO 1st-person singular present/future — "я победю" doesn\'t exist! Russians say "я смогу победить" (I will be able to win) or "я одержу победу" instead.',
+      tip:'💡 победить has a missing form: there is no accepted "я победю/побежду". Native speakers dodge it with "я смогу победить" (I\'ll be able to win) or "одержу победу" (I\'ll achieve victory). A famous gap in Russian grammar!'
+    },
+    {
+      ru:'основать', en:'to found / to establish (perf)', pos:'verb (perf, 1st conj)',
+      forms:{present:{'я':'основу','ты':'основёшь','он/она':'основёт','мы':'основём','вы':'основёте','они':'основут'},past:{'м (он)':'основал','ж (она)':'основала','н (оно)':'основало','мн (они)':'основали'},imperative:{'ты':'основай','вы':'основайте'}},
+      focusForms:['past_м (он)'],
+      example:'Пётр Первый основал Санкт-Петербург.', exampleEn:'Peter the First founded St Petersburg.',
+      formExamples:{'past_м (он)':{ru:'Он основал город в 1703 году.',en:'He founded the city in 1703.',focus:true}},
+      grammar:'основать from основа (basis/foundation). основать город/компанию/университет. основатель (founder). "Москва основана в 1147 году" (Moscow was founded in 1147 — passive past).',
+      tip:'💡 "Санкт-Петербург основан Петром Первым в 1703 году" (St Petersburg was founded by Peter I in 1703). The passive основан + instrumental of the founder is standard for history dates.'
+    },
+    {
+      ru:'освободить', en:'to liberate / to free (perf)', pos:'verb (perf, 2nd conj)',
+      forms:{present:{'я':'освобожу','ты':'освободишь','он/она':'освободит','мы':'освободим','вы':'освободите','они':'освободят'},past:{'м (он)':'освободил','ж (она)':'освободила','н (оно)':'освободило','мн (они)':'освободили'},imperative:{'ты':'освободи','вы':'освободите'}},
+      focusForms:['past_м (он)','past_мн (они)'],
+      example:'Армия освободила город.', exampleEn:'The army liberated the city.',
+      formExamples:{'past_мн (они)':{ru:'Они освободили страну.',en:'They liberated the country.',focus:true}},
+      grammar:'освободить from свобода (freedom). освобождение (liberation). The word carries huge weight re WWII: освобождение Европы (liberation of Europe). Also everyday: освободить место (to free up a seat/space).',
+      tip:'💡 освобождение (liberation) is a solemn historical word (освобождение от фашизма — liberation from fascism) but also mundane: "освободите место" (free up the seat), "я освободился в пять" (I got free/finished at five).'
+    },
+  ],
+  story:{
+    title:'Великие правители / Great Rulers',
+    sentences:[
+      {ru:'Пётр Первый правил Россией с 1682 года.',en:'Peter the First ruled Russia from 1682.'},
+      {ru:'Он основал город Санкт-Петербург.',en:'He founded the city of St Petersburg.'},
+      {ru:'Россия воевала со Швецией.',en:'Russia fought against Sweden.'},
+      {ru:'В итоге русские победили.',en:'In the end the Russians won.'},
+      {ru:'Позже армия освободила новые земли.',en:'Later the army liberated new lands.'},
+    ],
+    questions:[
+      {q:'From when did Peter the First rule?',opts:['1147','1682','1703','1812'],ans:1},
+      {q:'What city did he found?',opts:['Moscow','Kyiv','St Petersburg','Novgorod'],ans:2},
+      {q:'Who did Russia fight?',opts:['France','Sweden','Germany','Poland'],ans:1},
+    ]
+  },
+  conversation:{
+    topic:'Discussing historical events with verbs',
+    speakers:['Ученик','Учитель'],
+    lines:[
+      {sp:'Ученик',ru:'Кто основал Санкт-Петербург?',en:'Who founded St Petersburg?',blank:false},
+      {sp:'Учитель',ru:'Пётр Первый основал его в 1703 году.',en:'Peter the First founded it in 1703.',blank:true,opts:['Пётр Первый основал его в 1703 году.','Нет.','Пока!']},
+      {sp:'Ученик',ru:'Он долго правил?',en:'Did he rule for a long time?',blank:false},
+      {sp:'Учитель',ru:'Да, и много воевал со Швецией.',en:'Yes, and fought a lot against Sweden.',blank:false},
+      {sp:'Ученик',ru:'И Россия победила?',en:'And did Russia win?',blank:true,opts:['И Россия победила?','Нет.','Пока!']},
+      {sp:'Учитель',ru:'Да, победила и освободила земли.',en:'Yes, it won and liberated lands.',blank:false},
+    ]
+  }
+}
+];
 window.HISTORY_UNITS = HISTORY_UNITS;
 
 // ── SPORTS ───────────────────────────────────────────────────────
@@ -43320,7 +43824,120 @@ const BODY_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'bdy_V1a', topicId:'body', code:'V1a', title:'Body & Gestures',
+  grammarFocus:'Gesture & expression verbs — улыбаться, обнимать, кивать, махать',
+  level:'A1p', desc:'улыбаться, обнимать, кивать, махать, пожимать, хмуриться',
+  icon:'🤝', wordType:'verb', unlockAfter:'bdy_1a',
+  words:[
+    {
+      ru:'улыбаться', en:'to smile (impf)', pos:'verb (impf, 1st conj reflexive)',
+      forms:{
+        present:{'я':'улыбаюсь','ты':'улыбаешься','он/она':'улыбается','мы':'улыбаемся','вы':'улыбаетесь','они':'улыбаются'},
+        past:{'м (он)':'улыбался','ж (она)':'улыбалась','н (оно)':'улыбалось','мн (они)':'улыбались'},
+        imperative:{'ты':'улыбайся','вы':'улыбайтесь'}
+      },
+      focusForms:['present_я','present_он/она'],
+      example:'Она всегда улыбается.', exampleEn:'She always smiles.',
+      formExamples:{
+        'я':{ru:'Я улыбаюсь друзьям.',en:'I smile at friends.',focus:true},
+        'он/она':{ru:'Ребёнок улыбается.',en:'The child is smiling.',focus:true},
+      },
+      grammar:'улыбаться (impf) / улыбнуться (perf). улыбаться + dative (to smile at someone): улыбаться маме. Reflexive verb (-ся). "Улыбнись!" (Smile! — perfective imperative).',
+      tip:'💡 Russians reserve smiles for genuine warmth — smiling at strangers can seem odd or insincere. "Улыбайся!" to a friend is real encouragement. A Russian smile means something.'
+    },
+    {
+      ru:'обнимать', en:'to hug / to embrace (impf)', pos:'verb (impf, 1st conj)',
+      forms:{
+        present:{'я':'обнимаю','ты':'обнимаешь','он/она':'обнимает','мы':'обнимаем','вы':'обнимаете','они':'обнимают'},
+        past:{'м (он)':'обнимал','ж (она)':'обнимала','н (оно)':'обнимало','мн (они)':'обнимали'},
+        imperative:{'ты':'обнимай','вы':'обнимайте'}
+      },
+      focusForms:['present_я'],
+      example:'Мама обнимает ребёнка.', exampleEn:'Mum hugs the child.',
+      formExamples:{
+        'я':{ru:'Я обнимаю друга.',en:'I hug my friend.',focus:true},
+      },
+      grammar:'обнимать (impf) / обнять (perf). обнимать + accusative. "Обними меня!" (Hug me!). "Обнимаю!" at the end of a message = "Hugs!" (warm sign-off between close people).',
+      tip:'💡 "Обнимаю!" (Hugs!) is a warm way to end messages to family and close friends — like "big hug!" in English. "Крепко обнимаю" (hugging you tightly) is even warmer.'
+    },
+    {
+      ru:'кивать', en:'to nod (impf)', pos:'verb (impf, 1st conj)',
+      forms:{
+        present:{'я':'киваю','ты':'киваешь','он/она':'кивает','мы':'киваем','вы':'киваете','они':'кивают'},
+        past:{'м (он)':'кивал','ж (она)':'кивала','н (оно)':'кивало','мн (они)':'кивали'},
+        imperative:{'ты':'кивай','вы':'кивайте'}
+      },
+      focusForms:['present_он/она'],
+      example:'Он кивает в знак согласия.', exampleEn:'He nods in agreement.',
+      formExamples:{
+        'он/она':{ru:'Она кивает головой.',en:'She nods her head.',focus:true},
+      },
+      grammar:'кивать (impf) / кивнуть (perf, a single nod). кивать головой (to nod the head — instrumental). В знак согласия (as a sign of agreement). Opposite: качать головой (to shake the head — means no).',
+      tip:'💡 кивать головой = nod (yes), качать головой = shake head (no). Same head movements as English. "Кивни, если согласен" (Nod if you agree) — a useful instruction.'
+    },
+    {
+      ru:'махать', en:'to wave (impf)', pos:'verb (impf, irregular)',
+      forms:{
+        present:{'я':'машу','ты':'машешь','он/она':'машет','мы':'машем','вы':'машете','они':'машут'},
+        past:{'м (он)':'махал','ж (она)':'махала','н (оно)':'махало','мн (они)':'махали'},
+        imperative:{'ты':'маши','вы':'машите'}
+      },
+      focusForms:['present_я','present_он/она'],
+      example:'Дети машут руками.', exampleEn:'The children wave their hands.',
+      formExamples:{
+        'я':{ru:'Я машу на прощание.',en:'I wave goodbye.',focus:true},
+        'он/она':{ru:'Она машет рукой.',en:'She waves her hand.',focus:true},
+      },
+      grammar:'махать — irregular present (х→ш): машу, машешь, машет. махать + instrumental (рукой). махнуть (perf, single wave). "Махнуть рукой" also idiom: to give up on something.',
+      tip:'💡 "Махнуть рукой (на что-то)" — literally "to wave a hand at something" = to give up on it, to stop caring. "Он махнул на это рукой" (He gave up on it). A vivid Russian idiom.'
+    },
+    {
+      ru:'хмуриться', en:'to frown (impf)', pos:'verb (impf, 2nd conj reflexive)',
+      forms:{
+        present:{'я':'хмурюсь','ты':'хмуришься','он/она':'хмурится','мы':'хмуримся','вы':'хмуритесь','они':'хмурятся'},
+        past:{'м (он)':'хмурился','ж (она)':'хмурилась','н (оно)':'хмурилось','мн (они)':'хмурились'},
+        imperative:{'ты':'не хмурься','вы':'не хмурьтесь'}
+      },
+      focusForms:['present_он/она'],
+      example:'Не хмурься, всё будет хорошо!', exampleEn:'Don\'t frown, everything will be fine!',
+      formExamples:{
+        'он/она':{ru:'Он хмурится от усталости.',en:'He frowns from tiredness.',focus:true},
+      },
+      grammar:'хмуриться (reflexive). "Не хмурься!" (Don\'t frown!) — kind encouragement. Also used for weather: "Небо хмурится" (The sky is darkening/clouding over) — beautiful figurative use.',
+      tip:'💡 "Небо хмурится" (The sky is frowning) — Russian poetically says the sky "frowns" when it clouds over before rain. Nature is personified. "Хмурое небо" (an overcast sky).'
+    },
+  ],
+  story:{
+    title:'Язык жестов / The Language of Gestures',
+    sentences:[
+      {ru:'Когда мы встречаемся, я улыбаюсь.',en:'When we meet, I smile.'},
+      {ru:'Друзья обнимают друг друга.',en:'Friends hug each other.'},
+      {ru:'Я киваю, когда согласен.',en:'I nod when I agree.'},
+      {ru:'На прощание мы машем руками.',en:'At parting we wave our hands.'},
+      {ru:'Не хмурься — улыбайся чаще!',en:'Don\'t frown — smile more often!'},
+    ],
+    questions:[
+      {q:'What does the speaker do when meeting?',opts:['Frowns','Waves','Smiles','Nods'],ans:2},
+      {q:'When does the speaker nod?',opts:['When sad','When agreeing','When leaving','When tired'],ans:1},
+      {q:'What is the final advice?',opts:['Frown less, smile more','Wave goodbye','Hug friends','Nod often'],ans:0},
+    ]
+  },
+  conversation:{
+    topic:'Talking about gestures and expressions',
+    speakers:['Аня','Боря'],
+    lines:[
+      {sp:'Аня',ru:'Боря, почему ты хмуришься?',en:'Borya, why are you frowning?',blank:false},
+      {sp:'Боря',ru:'Устал. Но я уже улыбаюсь!',en:'Tired. But I\'m already smiling!',blank:true,opts:['Устал. Но я уже улыбаюсь!','Нет.','Пока!']},
+      {sp:'Аня',ru:'Вот так лучше! Обними меня.',en:'That\'s better! Hug me.',blank:false},
+      {sp:'Боря',ru:'Конечно! Ты всегда добрая.',en:'Of course! You\'re always kind.',blank:false},
+      {sp:'Аня',ru:'Махнём рукой на проблемы?',en:'Shall we wave away our problems?',blank:true,opts:['Махнём рукой на проблемы?','Нет.','Пока!']},
+      {sp:'Боря',ru:'Давай! Улыбаемся и идём.',en:'Let\'s do it! We smile and go.',blank:false},
+    ]
+  }
+}
+];
 window.BODY_UNITS = BODY_UNITS;
 
 // ── SCIENCE & NATURE ─────────────────────────────────────────────
@@ -43909,12 +44526,383 @@ const SCIENCE_UNITS = [{
       blank: false
     }]
   }
-}];
+},
+{
+  id:'sci_V1a', topicId:'science', code:'V1a', title:'Science & Nature',
+  grammarFocus:'Science verbs — изучать, исследовать, открывать, наблюдать',
+  level:'A2', desc:'изучать, исследовать, открывать, наблюдать, доказывать, расти',
+  icon:'🔬', wordType:'verb', unlockAfter:'sci_1a',
+  words:[
+    {
+      ru:'изучать', en:'to study / to research (impf)', pos:'verb (impf, 1st conj)',
+      forms:{
+        present:{'я':'изучаю','ты':'изучаешь','он/она':'изучает','мы':'изучаем','вы':'изучаете','они':'изучают'},
+        past:{'м (он)':'изучал','ж (она)':'изучала','н (оно)':'изучало','мн (они)':'изучали'},
+        imperative:{'ты':'изучай','вы':'изучайте'}
+      },
+      focusForms:['present_я','present_он/она'],
+      example:'Учёные изучают природу.', exampleEn:'Scientists study nature.',
+      formExamples:{
+        'я':{ru:'Я изучаю русский язык.',en:'I study the Russian language.',focus:true},
+        'он/она':{ru:'Он изучает космос.',en:'He studies space.',focus:true},
+      },
+      grammar:'изучать (impf, ongoing study) / изучить (perf, master fully). изучать + accusative: изучать язык, изучать природу. Contrast with учить (to learn/memorise) — изучать is deeper, more academic.',
+      tip:'💡 изучать vs учить: изучать = to study/research deeply (a subject, a phenomenon); учить = to learn/memorise (words, a poem). "Я изучаю историю" (I study history as a discipline).'
+    },
+    {
+      ru:'исследовать', en:'to investigate / to explore', pos:'verb (impf/perf, 1st conj)',
+      forms:{
+        present:{'я':'исследую','ты':'исследуешь','он/она':'исследует','мы':'исследуем','вы':'исследуете','они':'исследуют'},
+        past:{'м (он)':'исследовал','ж (она)':'исследовала','н (оно)':'исследовало','мн (они)':'исследовали'},
+        imperative:{'ты':'исследуй','вы':'исследуйте'}
+      },
+      focusForms:['present_мы','past_м (он)'],
+      example:'Они исследуют океан.', exampleEn:'They explore the ocean.',
+      formExamples:{
+        'мы':{ru:'Мы исследуем Арктику.',en:'We are exploring the Arctic.',focus:true},
+        'past_м (он)':{ru:'Он исследовал Сибирь.',en:'He explored Siberia.',focus:true},
+      },
+      grammar:'исследовать — bi-aspectual (same form for impf and perf). исследование (research/study — noun). исследователь (researcher/explorer). исследовать + accusative.',
+      tip:'💡 исследователь (explorer/researcher) — Russia has a proud tradition of exploration: исследователи Арктики (Arctic explorers), космические исследования (space research). A heroic word.'
+    },
+    {
+      ru:'открывать', en:'to discover / to open (impf)', pos:'verb (impf, 1st conj)',
+      forms:{
+        present:{'я':'открываю','ты':'открываешь','он/она':'открывает','мы':'открываем','вы':'открываете','они':'открывают'},
+        past:{'м (он)':'открывал','ж (она)':'открывала','н (оно)':'открывало','мн (они)':'открывали'},
+        imperative:{'ты':'открывай','вы':'открывайте'}
+      },
+      focusForms:['present_он/она','past_м (он)'],
+      example:'Учёные открывают новые виды.', exampleEn:'Scientists discover new species.',
+      formExamples:{
+        'он/она':{ru:'Наука открывает тайны.',en:'Science reveals secrets.',focus:true},
+        'past_м (он)':{ru:'Менделеев открыл закон.',en:'Mendeleev discovered the law.',focus:true},
+      },
+      grammar:'открывать (impf) / открыть (perf). Both "to open" (door) AND "to discover" (law, land, species). "Менделеев открыл периодический закон" (Mendeleev discovered the periodic law).',
+      tip:'💡 Менделеев (Mendeleev) — the Russian chemist who created the периодическая таблица (periodic table) in 1869. Open + discover share one verb: "открыть Америку" = to discover America.'
+    },
+    {
+      ru:'наблюдать', en:'to observe / to watch (impf)', pos:'verb (impf, 1st conj)',
+      forms:{
+        present:{'я':'наблюдаю','ты':'наблюдаешь','он/она':'наблюдает','мы':'наблюдаем','вы':'наблюдаете','они':'наблюдают'},
+        past:{'м (он)':'наблюдал','ж (она)':'наблюдала','н (оно)':'наблюдало','мн (они)':'наблюдали'},
+        imperative:{'ты':'наблюдай','вы':'наблюдайте'}
+      },
+      focusForms:['present_я'],
+      example:'Я наблюдаю за птицами.', exampleEn:'I observe the birds.',
+      formExamples:{
+        'я':{ru:'Я наблюдаю за звёздами.',en:'I observe the stars.',focus:true},
+      },
+      grammar:'наблюдать за + instrumental (to observe/watch over something): наблюдать за птицами, за звёздами, за погодой. наблюдение (observation — noun). наблюдатель (observer).',
+      tip:'💡 наблюдать за + instrumental: наблюдать за природой (observe nature), за звёздами (stargazing). The за + instrumental is key — you observe "after/over" the thing in Russian logic.'
+    },
+    {
+      ru:'расти', en:'to grow (impf)', pos:'verb (impf, irregular)',
+      forms:{
+        present:{'я':'расту','ты':'растёшь','он/она':'растёт','мы':'растём','вы':'растёте','они':'растут'},
+        past:{'м (он)':'рос','ж (она)':'росла','н (оно)':'росло','мн (они)':'росли'},
+        imperative:{'ты':'расти','вы':'растите'}
+      },
+      focusForms:['present_он/она','past_м (он)'],
+      example:'Деревья растут медленно.', exampleEn:'Trees grow slowly.',
+      formExamples:{
+        'он/она':{ru:'Растение растёт к свету.',en:'The plant grows towards the light.',focus:true},
+        'past_м (он)':{ru:'Лес рос веками.',en:'The forest grew over centuries.',focus:true},
+      },
+      grammar:'расти — irregular. Note the unusual past: рос/росла/росло/росли (no -т-). вырасти (perf: to grow up/grow fully). "Я вырос в деревне" (I grew up in a village). растение (plant).',
+      tip:'💡 Irregular past of расти: рос/росла (not *растил). "Где ты рос/росла?" (Where did you grow up?) — a common get-to-know-you question. вырасти = to grow up (perfective).'
+    },
+  ],
+  story:{
+    title:'Учёный за работой / A Scientist at Work',
+    sentences:[
+      {ru:'Учёный изучает дикую природу.',en:'The scientist studies wild nature.'},
+      {ru:'Он наблюдает за редкими животными.',en:'He observes rare animals.'},
+      {ru:'Каждый день он исследует лес.',en:'Every day he explores the forest.'},
+      {ru:'Иногда он открывает новые виды.',en:'Sometimes he discovers new species.'},
+      {ru:'Наука растёт благодаря таким людям.',en:'Science grows thanks to such people.'},
+    ],
+    questions:[
+      {q:'What does the scientist study?',opts:['The city','Wild nature','Machines','History'],ans:1},
+      {q:'What does he observe?',opts:['The weather','The stars','Rare animals','People'],ans:2},
+      {q:'What does he sometimes discover?',opts:['New laws','New species','New planets','New books'],ans:1},
+    ]
+  },
+  conversation:{
+    topic:'Discussing scientific work',
+    speakers:['Журналист','Учёный'],
+    lines:[
+      {sp:'Журналист',ru:'Что вы изучаете?',en:'What do you study?',blank:false},
+      {sp:'Учёный',ru:'Я изучаю животных Сибири.',en:'I study the animals of Siberia.',blank:true,opts:['Я изучаю животных Сибири.','Нет.','Пока!']},
+      {sp:'Журналист',ru:'Вы наблюдаете за ними в природе?',en:'Do you observe them in nature?',blank:false},
+      {sp:'Учёный',ru:'Да, исследую их каждый день.',en:'Yes, I research them every day.',blank:false},
+      {sp:'Журналист',ru:'Открыли что-то новое?',en:'Have you discovered anything new?',blank:true,opts:['Открыли что-то новое?','Нет.','Пока!']},
+      {sp:'Учёный',ru:'Да! Новый вид птиц.',en:'Yes! A new species of bird.',blank:false},
+    ]
+  }
+}
+];
 window.SCIENCE_UNITS = SCIENCE_UNITS;
+
+const IDIOM_UNITS = [
+  {
+    id:'idm_1a', topicId:'idioms', code:'1a', title:'Idioms & Sayings',
+    grammarFocus:'Everyday idioms — fixed expressions',
+    level:'A2', desc:'ни пуха ни пера, как дела, всё в порядке, не за что, договорились',
+    icon:'💬',
+    words:[
+      {
+        ru:'Ни пуха ни пера!', en:'Good luck! (lit: neither fluff nor feather)', pos:'idiom',
+        forms:{singular:{nom:'Ни пуха ни пера!',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Завтра экзамен? Ни пуха ни пера!', exampleEn:'Exam tomorrow? Good luck!',
+        formExamples:{nom_sg:{ru:'Ни пуха ни пера на собеседовании!',en:'Good luck at the interview!',focus:true}},
+        grammar:'A hunters\' wish for good luck. The traditional reply is "К чёрту!" (To the devil!) — wishing aloud was thought to jinx the hunt, so you "curse" it instead. Never reply "спасибо"!',
+        tip:'💡 Say "Ни пуха ни пера!" before an exam/interview/challenge. The ONLY correct reply is "К чёрту!" (To the devil!). Saying "спасибо" instead breaks the superstition and is a giveaway you are not a native.'
+      },
+      {
+        ru:'Всё в порядке', en:'Everything is fine / all good', pos:'idiom',
+        forms:{singular:{nom:'Всё в порядке',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Не волнуйся, всё в порядке.', exampleEn:'Don\'t worry, everything is fine.',
+        formExamples:{nom_sg:{ru:'У меня всё в порядке.',en:'I\'m all good / everything is fine with me.',focus:true}},
+        grammar:'в порядке = in order. The standard reassurance. "Ты в порядке?" (Are you okay?) — "Да, всё в порядке" (Yes, all good). Negate: "Что-то не в порядке" (Something is wrong).',
+        tip:'💡 "Ты в порядке?" / "Всё в порядке?" (Are you OK? / Is everything OK?) — the everyday check-in. The reply "Всё в порядке" is the Russian "I\'m fine". Extremely common.'
+      },
+      {
+        ru:'Не за что', en:'You\'re welcome / don\'t mention it', pos:'idiom',
+        forms:{singular:{nom:'Не за что',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'— Спасибо! — Не за что!', exampleEn:'— Thank you! — You\'re welcome!',
+        formExamples:{nom_sg:{ru:'Не за что, обращайся!',en:'Don\'t mention it, ask anytime!',focus:true}},
+        grammar:'Literally "there is nothing to thank for". The most common reply to спасибо. Alternatives: пожалуйста (you\'re welcome), да ладно (no worries), всегда пожалуйста (always welcome).',
+        tip:'💡 Replies to "спасибо": "Пожалуйста" (formal), "Не за что" (casual, lit. "not for anything"), "Да не за что!" (warm). "Не за что" downplays the favour — very Russian modesty.'
+      },
+      {
+        ru:'Договорились!', en:'Agreed! / It\'s a deal!', pos:'idiom',
+        forms:{singular:{nom:'Договорились',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Встретимся в семь? — Договорились!', exampleEn:'Meet at seven? — It\'s a deal!',
+        formExamples:{nom_sg:{ru:'Значит, договорились.',en:'So, it\'s agreed then.',focus:true}},
+        grammar:'Past tense of договориться (to come to an agreement), used as a fixed exclamation = "Deal!/Agreed!". Seals plans. Stronger commitment than just "хорошо" (okay).',
+        tip:'💡 "Договорились!" seals a plan firmly — more binding than "хорошо". When a Russian says "Договорились!", the arrangement is set. Great for confirming meetings and plans.'
+      },
+      {
+        ru:'В чём дело?', en:'What\'s the matter? / What\'s going on?', pos:'idiom',
+        forms:{singular:{nom:'В чём дело?',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Ты грустный. В чём дело?', exampleEn:'You look sad. What\'s the matter?',
+        formExamples:{nom_sg:{ru:'В чём дело? Что случилось?',en:'What\'s the matter? What happened?',focus:true}},
+        grammar:'дело = matter/affair/business — one of the most useful Russian nouns. в чём дело (prepositional). Related: "Дело в том, что..." (The thing is that...), "Как дела?" (How are things?).',
+        tip:'💡 дело is everywhere: "Как дела?" (How are things?), "В чём дело?" (What\'s the matter?), "Дело в том, что..." (The thing is...), "Это не моё дело" (None of my business). Master дело.'
+      },
+      {
+        ru:'Ну вот!', en:'There we go! / See! / Well!', pos:'idiom',
+        forms:{singular:{nom:'Ну вот',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Ну вот, всё готово!', exampleEn:'There we go, everything is ready!',
+        formExamples:{nom_sg:{ru:'Ну вот, я же говорил!',en:'See, I told you so!',focus:true}},
+        grammar:'ну (well/so) + вот (here/there) — a filler expressing completion, mild frustration, or "I told you so". Tone carries the meaning. Russians use ну constantly as a discourse particle.',
+        tip:'💡 ну is the ultimate Russian filler word — "Ну..." (Well...), "Ну вот" (There you go), "Ну и что?" (So what?), "Ну ладно" (Okay then). Sprinkle ну to sound natural and buy thinking time.'
+      },
+    ],
+    story:{
+      title:'Удачный день / A Lucky Day',
+      sentences:[
+        {ru:'— У меня сегодня экзамен.',en:'— I have an exam today.'},
+        {ru:'— Ни пуха ни пера! — К чёрту!',en:'— Good luck! — To the devil! (the ritual reply)'},
+        {ru:'Через час: — Ну вот, всё в порядке!',en:'An hour later: — There we go, everything\'s fine!'},
+        {ru:'— Сдал? Поздравляю! — Спасибо! — Не за что!',en:'— Passed? Congrats! — Thanks! — Don\'t mention it!'},
+        {ru:'— Отметим вечером? — Договорились!',en:'— Celebrate tonight? — It\'s a deal!'},
+      ],
+      questions:[
+        {q:'What is the correct reply to "Ни пуха ни пера"?',opts:['Спасибо','К чёрту!','Пожалуйста','Договорились'],ans:1},
+        {q:'How did the exam go?',opts:['Badly','Everything is fine','Cancelled','Unknown'],ans:1},
+        {q:'What seals the evening plan?',opts:['Ну вот','Не за что','Договорились','В чём дело'],ans:2},
+      ]
+    },
+    conversation:{
+      topic:'Using everyday idioms naturally',
+      speakers:['Витя','Соня'],
+      lines:[
+        {sp:'Витя',ru:'Соня, ты в порядке? Выглядишь устало.',en:'Sonya, are you okay? You look tired.',blank:false},
+        {sp:'Соня',ru:'Всё в порядке, просто много работы.',en:'Everything\'s fine, just a lot of work.',blank:true,opts:['Всё в порядке, просто много работы.','Нет.','Пока!']},
+        {sp:'Витя',ru:'Помочь? Завтра у тебя презентация.',en:'Need help? You have a presentation tomorrow.',blank:false},
+        {sp:'Соня',ru:'Спасибо! Ни пуха ни пера мне завтра!',en:'Thanks! Good luck to me tomorrow!',blank:false},
+        {sp:'Витя',ru:'К чёрту! Встретимся после в кафе?',en:'To the devil! Shall we meet at the café after?',blank:true,opts:['К чёрту! Встретимся после в кафе?','Нет.','Пока!']},
+        {sp:'Соня',ru:'Договорились!',en:'It\'s a deal!',blank:false},
+      ]
+    }
+  },
+
+  {
+    id:'idm_2a', topicId:'idioms', code:'2a', title:'Idioms & Sayings',
+    grammarFocus:'Proverbs — народная мудрость',
+    level:'A2', desc:'Тише едешь — дальше будешь, Без труда не вытащишь рыбку из пруда',
+    icon:'📜', unlockAfter:'idm_1a',
+    words:[
+      {
+        ru:'Тише едешь — дальше будешь', en:'Slow and steady wins the race (lit: drive quieter, get further)', pos:'proverb',
+        forms:{singular:{nom:'Тише едешь — дальше будешь',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Не спеши с решением. Тише едешь — дальше будешь.', exampleEn:'Don\'t rush the decision. Slow and steady wins the race.',
+        formExamples:{nom_sg:{ru:'Тише едешь — дальше будешь, как говорится.',en:'Slow and steady, as the saying goes.',focus:true}},
+        grammar:'тише (comparative of тихо — quieter/slower) + едешь (you drive). дальше (comparative of далеко — further). A proverb urging patience over haste. "Как говорится" (as the saying goes) often precedes proverbs.',
+        tip:'💡 Russians love quoting proverbs in everyday speech. Introduce one with "Как говорится..." (As the saying goes...). It signals wisdom and cultural fluency. This one ≈ "more haste, less speed".'
+      },
+      {
+        ru:'Без труда не вытащишь и рыбку из пруда', en:'No pain, no gain (lit: without effort you won\'t even pull a fish from the pond)', pos:'proverb',
+        forms:{singular:{nom:'Без труда не вытащишь и рыбку из пруда',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Хочешь успеха? Без труда не вытащишь и рыбку из пруда.', exampleEn:'Want success? No pain, no gain.',
+        formExamples:{nom_sg:{ru:'Учись усердно — без труда не вытащишь рыбку из пруда.',en:'Study hard — nothing comes without effort.',focus:true}},
+        grammar:'без труда (without labour — genitive after без). не вытащишь (you won\'t pull out). рыбку (diminutive of рыба, accusative). из пруда (from the pond — genitive after из). Effort is required for any reward.',
+        tip:'💡 Note the affectionate diminutive рыбку (little fish) — proverbs often use diminutives for rhythm and folksy warmth. The full proverb rhymes: труда/пруда. Russian proverbs are usually rhymed.'
+      },
+      {
+        ru:'Не всё то золото, что блестит', en:'All that glitters is not gold', pos:'proverb',
+        forms:{singular:{nom:'Не всё то золото, что блестит',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Дорогой телефон, но плохой. Не всё то золото, что блестит.', exampleEn:'Expensive phone, but bad. All that glitters is not gold.',
+        formExamples:{nom_sg:{ru:'Не верь рекламе — не всё то золото, что блестит.',en:'Don\'t trust ads — all that glitters is not gold.',focus:true}},
+        grammar:'золото (gold). что блестит (that shines/glitters — блестеть). A near-identical proverb exists in English, making it easy to remember. Warns against judging by appearances.',
+        tip:'💡 This proverb is almost word-for-word the same as in English — a "cognate proverb". Several Russian proverbs match English ones, which makes them easy starting points for learners.'
+      },
+      {
+        ru:'Семь раз отмерь — один раз отрежь', en:'Measure twice, cut once (lit: measure seven times, cut once)', pos:'proverb',
+        forms:{singular:{nom:'Семь раз отмерь — один раз отрежь',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Подумай хорошо. Семь раз отмерь — один раз отрежь.', exampleEn:'Think carefully. Measure twice, cut once.',
+        formExamples:{nom_sg:{ru:'Перед решением: семь раз отмерь — один раз отрежь.',en:'Before deciding: measure seven times, cut once.',focus:true}},
+        grammar:'семь раз (seven times). отмерь (measure! — imperative of отмерить). отрежь (cut! — imperative of отрезать). Russian says "seven times" where English says "twice" — measure even more carefully!',
+        tip:'💡 Russian out-measures English: семь раз (seven times) vs English "twice". The advice: plan thoroughly before acting irreversibly. Two imperatives (отмерь, отрежь) make it punchy.'
+      },
+      {
+        ru:'Делу время, потехе час', en:'Work first, play later (lit: to work — time, to fun — an hour)', pos:'proverb',
+        forms:{singular:{nom:'Делу время, потехе час',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Сначала уроки. Делу время, потехе час.', exampleEn:'Homework first. Work first, play later.',
+        formExamples:{nom_sg:{ru:'Закончи работу — делу время, потехе час.',en:'Finish the work — business before pleasure.',focus:true}},
+        grammar:'делу (to business — dative), потехе (to fun/amusement — dative). The dative marks what each portion of time is "given to". Attributed to Tsar Alexei Mikhailovich (17th c.). Work deserves most time, fun an hour.',
+        tip:'💡 "Делу время, потехе час" ≈ "business before pleasure". The dative case (делу, потехе) assigns time to each. A 17th-century royal saying still used to tell kids (and adults) to focus.'
+      },
+    ],
+    story:{
+      title:'Совет дедушки / Grandfather\'s Advice',
+      sentences:[
+        {ru:'Внук хотел быстро разбогатеть.',en:'The grandson wanted to get rich quickly.'},
+        {ru:'Дедушка сказал: «Тише едешь — дальше будешь».',en:'Grandfather said: "Slow and steady wins the race."'},
+        {ru:'«Без труда не вытащишь и рыбку из пруда».',en:'"No pain, no gain."'},
+        {ru:'«Семь раз отмерь — один раз отрежь».',en:'"Measure twice, cut once."'},
+        {ru:'Внук понял: делу время, потехе час.',en:'The grandson understood: work first, play later.'},
+      ],
+      questions:[
+        {q:'What did the grandson want?',opts:['To travel','To get rich quickly','To study','To rest'],ans:1},
+        {q:'Which proverb means "no pain no gain"?',opts:['Тише едешь','Без труда не вытащишь рыбку','Семь раз отмерь','Делу время'],ans:1},
+        {q:'What did the grandson finally understand?',opts:['Play first','Work first, play later','Money is everything','Speed wins'],ans:1},
+      ]
+    },
+    conversation:{
+      topic:'Quoting proverbs as advice',
+      speakers:['Студент','Наставник'],
+      lines:[
+        {sp:'Студент',ru:'Я хочу закончить проект за один день!',en:'I want to finish the project in one day!',blank:false},
+        {sp:'Наставник',ru:'Не спеши. Тише едешь — дальше будешь.',en:'Don\'t rush. Slow and steady wins the race.',blank:true,opts:['Не спеши. Тише едешь — дальше будешь.','Нет.','Пока!']},
+        {sp:'Студент',ru:'Но это так трудно!',en:'But it\'s so hard!',blank:false},
+        {sp:'Наставник',ru:'Без труда не вытащишь и рыбку из пруда.',en:'No pain, no gain.',blank:false},
+        {sp:'Студент',ru:'Хорошо. Сначала поработаю.',en:'Okay. I\'ll work first.',blank:true,opts:['Хорошо. Сначала поработаю.','Нет.','Пока!']},
+        {sp:'Наставник',ru:'Правильно. Делу время, потехе час!',en:'Correct. Business before pleasure!',blank:false},
+      ]
+    }
+  },
+
+  {
+    id:'idm_3a', topicId:'idioms', code:'3a', title:'Idioms & Sayings',
+    grammarFocus:'Colloquial expressions — разговорные выражения',
+    level:'A2', desc:'круто, без проблем, как-то так, ничего себе, давай',
+    icon:'🗣️', unlockAfter:'idm_2a',
+    words:[
+      {
+        ru:'Круто!', en:'Cool! / Awesome!', pos:'colloquial',
+        forms:{singular:{nom:'Круто',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Ты выиграл? Круто!', exampleEn:'You won? Cool!',
+        formExamples:{nom_sg:{ru:'Вот это круто!',en:'Now that\'s cool!',focus:true}},
+        grammar:'круто literally = steeply (from крутой — steep). Slang for "cool/awesome". крутой also describes a cool/tough person: "крутой парень" (a cool/tough guy). Very common in casual speech.',
+        tip:'💡 крутой/круто (cool) — from "steep". "Это круто!" (That\'s cool!), "крутой фильм" (a cool film), "крутой чувак" (a cool dude). Informal — great with friends, avoid in formal settings.'
+      },
+      {
+        ru:'Без проблем', en:'No problem', pos:'colloquial',
+        forms:{singular:{nom:'Без проблем',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Поможешь? — Без проблем!', exampleEn:'Will you help? — No problem!',
+        formExamples:{nom_sg:{ru:'Без проблем, сделаю завтра.',en:'No problem, I\'ll do it tomorrow.',focus:true}},
+        grammar:'без проблем (without problems — genitive plural after без). A casual agreement/reassurance borrowed in meaning from English "no problem". Synonym: легко (easy), запросто (easily).',
+        tip:'💡 "Без проблем!" (No problem!) and "Без вопросов!" (No questions! = sure thing!) are both casual ways to agree readily. "Легко!" (Easy!) works too. All signal easy willingness.'
+      },
+      {
+        ru:'Ничего себе!', en:'Wow! / No way! (expressing surprise)', pos:'colloquial',
+        forms:{singular:{nom:'Ничего себе',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Ничего себе! Какой большой дом!', exampleEn:'Wow! What a big house!',
+        formExamples:{nom_sg:{ru:'Ничего себе, как выросли дети!',en:'Wow, how the children have grown!',focus:true}},
+        grammar:'Literally "nothing to oneself" — makes no logical sense, it\'s a fixed exclamation of surprise/amazement. Stress: ничегО себе. Synonyms: Ого! (Oho!), Вот это да! (Wow!), Надо же! (Well I never!).',
+        tip:'💡 Surprise exclamations: "Ничего себе!", "Ого!", "Вот это да!", "Надо же!" — all mean "Wow!/No way!". "Ничего себе" is the most versatile. Don\'t translate it literally; it just means amazement.'
+      },
+      {
+        ru:'Как-то так', en:'Something like that / that\'s about it', pos:'colloquial',
+        forms:{singular:{nom:'Как-то так',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Вот так я провёл лето. Как-то так.', exampleEn:'That\'s how I spent the summer. Something like that.',
+        formExamples:{nom_sg:{ru:'Ну, как-то так получилось.',en:'Well, that\'s sort of how it turned out.',focus:true}},
+        grammar:'как-то (somehow) + так (so/like that). A casual way to wrap up a story or explanation, like English "and yeah, something like that". Signals you\'re done and being modestly vague.',
+        tip:'💡 "Как-то так" is the perfect way to END a story or summary casually — "...and that\'s about it". It signals modest closure. Russians use it constantly to finish explanations without a hard stop.'
+      },
+      {
+        ru:'Давай!', en:'Come on! / Let\'s go! / Bye! (casual)', pos:'colloquial',
+        forms:{singular:{nom:'Давай',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'},plural:{nom:'—',gen:'—',dat:'—',acc:'—',inst:'—',prep:'—'}},
+        focusForms:['nom_sg'],
+        example:'Ну давай, до встречи!', exampleEn:'Okay then, see you!',
+        formExamples:{nom_sg:{ru:'Давай, пошли!',en:'Come on, let\'s go!',focus:true}},
+        grammar:'Imperative of давать (to give), but used for encouragement ("come on!"), proposals ("давай пойдём" — let\'s go), and as a casual goodbye on the phone ("ну давай, пока"). Hugely multipurpose.',
+        tip:'💡 "Давай!" is one of the most-used Russian words: "Давай пойдём!" (Let\'s go!), "Давай!" (Come on! / Go for it!), and ending a call "Ну, давай, пока!" (Okay, bye!). Context gives the meaning.'
+      },
+    ],
+    story:{
+      title:'Разговор друзей / Friends Chatting',
+      sentences:[
+        {ru:'— Я купил новую машину!',en:'— I bought a new car!'},
+        {ru:'— Ничего себе! Круто!',en:'— Wow! Cool!'},
+        {ru:'— Прокатимся в выходные?',en:'— Shall we go for a ride at the weekend?'},
+        {ru:'— Без проблем! Давай!',en:'— No problem! Let\'s do it!'},
+        {ru:'— Отлично. Ну, как-то так. Давай, пока!',en:'— Great. Well, that\'s about it. Okay, bye!'},
+      ],
+      questions:[
+        {q:'How does the friend react to the news?',opts:['Ничего себе! Круто!','Без проблем','Как-то так','Договорились'],ans:0},
+        {q:'How does the friend agree to the ride?',opts:['Ничего себе','Без проблем! Давай!','Как-то так','К чёрту'],ans:1},
+        {q:'How do they end the chat?',opts:['Круто','Ничего себе','Давай, пока!','Без проблем'],ans:2},
+      ]
+    },
+    conversation:{
+      topic:'Sounding natural with colloquial expressions',
+      speakers:['Макс','Лера'],
+      lines:[
+        {sp:'Макс',ru:'Лера, я получил новую работу!',en:'Lera, I got a new job!',blank:false},
+        {sp:'Лера',ru:'Ничего себе! Круто! Поздравляю!',en:'Wow! Cool! Congratulations!',blank:true,opts:['Ничего себе! Круто! Поздравляю!','Нет.','Пока!']},
+        {sp:'Макс',ru:'Спасибо! Отметим сегодня?',en:'Thanks! Shall we celebrate today?',blank:false},
+        {sp:'Лера',ru:'Без проблем! Во сколько?',en:'No problem! What time?',blank:false},
+        {sp:'Макс',ru:'В восемь у кафе. Давай?',en:'At eight by the café. Deal?',blank:true,opts:['В восемь у кафе. Давай?','Нет.','Пока!']},
+        {sp:'Лера',ru:'Давай! Ну, как-то так. До встречи!',en:'Let\'s do it! Well, that\'s that. See you!',blank:false},
+      ]
+    }
+  },
+];
+
+window.IDIOM_UNITS = IDIOM_UNITS;
 
 // ── MERGE ALL FAMILY UNITS ──
 // All units across noun/verb/adjective tracks combined into one lookup
-const ALL_UNITS = [...FAMILY_UNITS, ...FAMILY_VERB_ADJ_UNITS, ...FOOD_UNITS, ...FOOD_VERB_ADJ_UNITS, ...HOME_UNITS, ...TRANSPORT_UNITS, ...CULTURE_UNITS, ...RELATIONSHIP_UNITS, ...REL_EXPAND, ...EMOTION_UNITS, ...EMO_EXPAND, ...HOBBY_UNITS, ...HOB_EXPAND, ...WORK_UNITS, ...WRK_EXPAND, ...DESCRIPTION_UNITS, ...DESC_EXPAND, ...FOOD_GAP_UNITS, ...HOME_GAP_UNITS, ...TRANSPORT_GAP_UNITS, ...DESCRIPTION_GAP_UNITS, ...EMOTION_GAP_UNITS, ...HOBBY_GAP_UNITS, ...WORK_GAP_UNITS, ...RELATIONSHIP_GAP_UNITS, ...CULTURE_GAP_UNITS, ...CULTURE_GAP2, ...GREETING_UNITS, ...GREETING_GAP_UNITS, ...NUMBER_UNITS, ...SHOPPING_UNITS, ...HEALTH_UNITS, ...TRAVEL_UNITS, ...TRV_EXPAND, ...WEATHER_UNITS, ...ORDERING_UNITS, ...DIRECTION_UNITS, ...WTH_EXPAND, ...DIR_EXPAND, ...ORD_EXPAND, ...TECH_UNITS, ...HISTORY_UNITS, ...SPORTS_UNITS, ...ARTS_UNITS, ...BODY_UNITS, ...SCIENCE_UNITS];
+const ALL_UNITS = [...FAMILY_UNITS, ...FAMILY_VERB_ADJ_UNITS, ...FOOD_UNITS, ...FOOD_VERB_ADJ_UNITS, ...HOME_UNITS, ...TRANSPORT_UNITS, ...CULTURE_UNITS, ...RELATIONSHIP_UNITS, ...REL_EXPAND, ...EMOTION_UNITS, ...EMO_EXPAND, ...HOBBY_UNITS, ...HOB_EXPAND, ...WORK_UNITS, ...WRK_EXPAND, ...DESCRIPTION_UNITS, ...DESC_EXPAND, ...FOOD_GAP_UNITS, ...HOME_GAP_UNITS, ...TRANSPORT_GAP_UNITS, ...DESCRIPTION_GAP_UNITS, ...EMOTION_GAP_UNITS, ...HOBBY_GAP_UNITS, ...WORK_GAP_UNITS, ...RELATIONSHIP_GAP_UNITS, ...CULTURE_GAP_UNITS, ...CULTURE_GAP2, ...GREETING_UNITS, ...GREETING_GAP_UNITS, ...NUMBER_UNITS, ...SHOPPING_UNITS, ...HEALTH_UNITS, ...TRAVEL_UNITS, ...TRV_EXPAND, ...WEATHER_UNITS, ...ORDERING_UNITS, ...DIRECTION_UNITS, ...WTH_EXPAND, ...DIR_EXPAND, ...ORD_EXPAND, ...TECH_UNITS, ...HISTORY_UNITS, ...SPORTS_UNITS, ...ARTS_UNITS, ...BODY_UNITS, ...SCIENCE_UNITS, ...IDIOM_UNITS];
 
 // Unit lookup by id
 const UNIT_MAP = {};
@@ -44267,6 +45255,9 @@ function go(sid, el) {
   if (sid === 'lesson') syncSpeedButtons();
   if (sid === 'wordindex') {
     buildWordIndex();
+  }
+  if (sid === 'tutor') {
+    TUTOR.open();
   }
   closeMenu();
   // Reliably jump to the top of the new screen on every device
@@ -46853,6 +47844,332 @@ function filterWords(q) {
     });
   });
 }
+
+
+// ============================================================
+// CONVERSATION TUTOR (Разговорный тренажёр)
+// Voice + text Russian conversation partner with correction.
+// Providers: Gemini (free tier) → Anthropic (paid fallback).
+// Auto-reverts to Gemini when its quota frees up.
+// ============================================================
+const TUTOR = {
+  topic: null,
+  history: [],          // [{role:'user'|'model', text}]
+  speakOn: true,        // bot voice (secondary priority)
+  busy: false,
+  rec: null,            // SpeechRecognition instance
+  listening: false,
+
+  // ---- provider config (keys kept in-memory only) ----
+  keys: { gemini: '', anthropic: '' },
+  geminiCoolUntil: 0,   // timestamp; while >now, skip Gemini and use Anthropic
+
+  topics: [
+    {id:'greet',   icon:'👋', title:'Знакомство',        en:'Getting acquainted',  seed:'Познакомься со мной: спроси, как меня зовут и откуда я.'},
+    {id:'cafe',    icon:'🍽️', title:'В кафе',             en:'At a café',           seed:'Притворись официантом в русском кафе. Поприветствуй меня и предложи меню.'},
+    {id:'travel',  icon:'✈️', title:'Путешествия',        en:'Travel',              seed:'Спроси меня о моём последнем путешествии.'},
+    {id:'family',  icon:'👨‍👩‍👧', title:'Семья',          en:'Family',              seed:'Спроси меня о моей семье.'},
+    {id:'weather', icon:'🌤️', title:'Погода',            en:'Weather',             seed:'Поговори со мной о погоде сегодня и о любимом времени года.'},
+    {id:'hobby',   icon:'🎭', title:'Хобби',              en:'Hobbies',             seed:'Спроси меня о моих увлечениях и хобби.'},
+    {id:'shop',    icon:'🛒', title:'В магазине',         en:'Shopping',            seed:'Притворись продавцом в магазине. Помоги мне что-нибудь купить.'},
+    {id:'work',    icon:'💼', title:'Работа',             en:'Work & jobs',         seed:'Спроси меня о моей работе или учёбе.'},
+    {id:'free',    icon:'💬', title:'Свободная тема',     en:'Free conversation',   seed:'Начни непринуждённый разговор на любую повседневную тему.'},
+  ],
+
+  systemPrompt(topicTitle) {
+    return [
+      'You are a warm, encouraging Russian conversation tutor talking with a learner (roughly A2 level).',
+      'Topic: "' + topicTitle + '". You LEAD the conversation and keep it going with one clear question at a time.',
+      'CRITICAL RULES:',
+      '1. Speak ONLY in Russian in your conversational reply (short, natural, 1–2 sentences, end with a question).',
+      '2. If the learner\'s previous Russian had a real mistake (grammar, case, word choice, word order), gently correct it BEFORE continuing.',
+      '3. Keep language simple and clear for a learner. Avoid rare words.',
+      '4. Never use cursive or stylised text. Plain Russian only.',
+      'You MUST reply with a single valid JSON object and nothing else, in this exact shape:',
+      '{"correction": null OR {"wrong":"<what they wrote>","fixed":"<corrected Russian>","why":"<short explanation in English>"}, "reply":"<your Russian conversational reply ending in a question>", "hint":"<a short English gloss of your reply so they can follow>"}',
+      'If there was no mistake, set "correction" to null. Always fill "reply" and "hint".'
+    ].join('\n');
+  },
+
+  // ---------- provider calls ----------
+  async callGemini(messages, sys) {
+    const key = this.keys.gemini.trim();
+    if (!key) throw {soft:true, msg:'no-gemini-key'};
+    const contents = messages.map(m => ({role: m.role === 'model' ? 'model' : 'user', parts:[{text:m.text}]}));
+    const body = {
+      systemInstruction:{parts:[{text:sys}]},
+      contents,
+      generationConfig:{temperature:0.7, maxOutputTokens:400, responseMimeType:'application/json'}
+    };
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(key);
+    const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+    if (r.status === 429 || r.status === 503) { throw {rateLimited:true, msg:'gemini-busy'}; }
+    if (!r.ok) { throw {msg:'gemini-http-' + r.status}; }
+    const data = await r.json();
+    const txt = (((data.candidates||[])[0]||{}).content||{}).parts || [];
+    const out = txt.map(p => p.text || '').join('');
+    if (!out) throw {msg:'gemini-empty'};
+    return out;
+  },
+
+  async callAnthropic(messages, sys) {
+    const key = this.keys.anthropic.trim();
+    if (!key) throw {soft:true, msg:'no-anthropic-key'};
+    const msgs = messages.map(m => ({role: m.role === 'model' ? 'assistant' : 'user', content:m.text}));
+    const body = {model:'claude-haiku-4-5-20251001', max_tokens:400, system:sys, messages:msgs};
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify(body)
+    });
+    if (!r.ok) { throw {msg:'anthropic-http-' + r.status}; }
+    const data = await r.json();
+    const out = (data.content||[]).map(c => c.text || '').join('');
+    if (!out) throw {msg:'anthropic-empty'};
+    return out;
+  },
+
+  // Try Gemini first (unless cooling down), fall back to Anthropic.
+  async ask(messages, sys) {
+    const now = Date.now();
+    const haveGemini = !!this.keys.gemini.trim();
+    const haveAnthropic = !!this.keys.anthropic.trim();
+    // Prefer Gemini if available and not in cooldown
+    if (haveGemini && now >= this.geminiCoolUntil) {
+      try {
+        const out = await this.callGemini(messages, sys);
+        return {text:out, via:'gemini'};
+      } catch (e) {
+        if (e.rateLimited) {
+          this.geminiCoolUntil = Date.now() + 60*1000; // back off 60s, then retry free again
+          if (haveAnthropic) { const out = await this.callAnthropic(messages, sys); return {text:out, via:'anthropic'}; }
+          throw {msg:'Gemini is rate-limited and no Anthropic key is set. Wait a minute and try again.'};
+        }
+        // hard gemini error → try anthropic if present
+        if (haveAnthropic) { const out = await this.callAnthropic(messages, sys); return {text:out, via:'anthropic'}; }
+        throw {msg:'Gemini error: ' + (e.msg||'unknown') + '. Add an Anthropic key as backup.'};
+      }
+    }
+    // Gemini cooling or absent → Anthropic
+    if (haveAnthropic) { const out = await this.callAnthropic(messages, sys); return {text:out, via:'anthropic'}; }
+    if (haveGemini) { const out = await this.callGemini(messages, sys); return {text:out, via:'gemini'}; }
+    throw {msg:'No API key set. Tap ⚙ and paste a Gemini (free) and/or Anthropic key.'};
+  },
+
+  parseReply(raw) {
+    let s = (raw||'').trim();
+    // strip code fences if any
+    s = s.replace(/^```(json)?/i,'').replace(/```$/,'').trim();
+    // grab the first {...} block
+    const a = s.indexOf('{'), b = s.lastIndexOf('}');
+    if (a >= 0 && b > a) s = s.substring(a, b+1);
+    try {
+      const o = JSON.parse(s);
+      return {
+        correction: o.correction || null,
+        reply: o.reply || o.text || '...',
+        hint: o.hint || ''
+      };
+    } catch (e) {
+      // not JSON — treat whole thing as the reply
+      return {correction:null, reply:(raw||'').trim() || '...', hint:''};
+    }
+  }
+};
+
+// ---------- UI / flow ----------
+TUTOR.esc = function(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+TUTOR.renderHome = function(){
+  const wrap = document.getElementById('tutor-body');
+  if (!wrap) return;
+  const haveKey = this.keys.gemini.trim() || this.keys.anthropic.trim();
+  let h = '';
+  if (!haveKey) {
+    h += '<div class="tutor-note">⚙ Tap the settings gear (top right) and paste a free Google Gemini key (and optionally an Anthropic key as backup) to begin.</div>';
+  }
+  h += '<div class="tutor-intro">Pick a topic. I\'ll lead a conversation in Russian — you reply by speaking (🎤) or typing. If you make a mistake, I\'ll show you the fix, then we keep chatting.</div>';
+  h += '<div class="tutor-topics">';
+  this.topics.forEach(t => {
+    h += '<button class="tutor-topic" onclick="TUTOR.start(\''+t.id+'\')">'+
+         '<span class="tt-ic">'+t.icon+'</span>'+
+         '<span class="tt-tt">'+this.esc(t.title)+'</span>'+
+         '<span class="tt-en">'+this.esc(t.en)+'</span>'+
+         '</button>';
+  });
+  h += '</div>';
+  wrap.innerHTML = h;
+};
+
+TUTOR.start = function(topicId){
+  const t = this.topics.find(x => x.id === topicId);
+  if (!t) return;
+  if (!(this.keys.gemini.trim() || this.keys.anthropic.trim())) { this.openSettings(); return; }
+  this.topic = t;
+  this.history = [];
+  this.renderChat();
+  // kick off: ask the model to open the conversation
+  this.history.push({role:'user', text:'[BEGIN] ' + t.seed});
+  this.turn(true);
+};
+
+TUTOR.renderChat = function(){
+  const wrap = document.getElementById('tutor-body');
+  if (!wrap) return;
+  wrap.innerHTML =
+    '<div class="tutor-chat-hd">'+
+      '<button class="tutor-back" onclick="TUTOR.exit()">←</button>'+
+      '<div class="tutor-chat-title">'+this.topic.icon+' '+this.esc(this.topic.title)+'</div>'+
+      '<button class="tutor-spk '+(this.speakOn?'on':'')+'" id="tutor-spk" onclick="TUTOR.toggleSpeak()" title="Bot voice on/off">'+(this.speakOn?'🔊':'🔇')+'</button>'+
+    '</div>'+
+    '<div class="tutor-msgs" id="tutor-msgs"></div>'+
+    '<div class="tutor-input">'+
+      '<button class="tutor-mic" id="tutor-mic" onclick="TUTOR.toggleMic()" title="Speak">🎤</button>'+
+      '<input id="tutor-text" type="text" placeholder="Speak with 🎤 or type here…" '+
+        'onkeydown="if(event.key===\'Enter\')TUTOR.sendText()">'+
+      '<button class="tutor-send" onclick="TUTOR.sendText()">➤</button>'+
+    '</div>';
+};
+
+TUTOR.addBubble = function(side, opts){
+  const box = document.getElementById('tutor-msgs');
+  if (!box) return null;
+  const row = document.createElement('div');
+  row.className = 'tb-row ' + side;
+  let inner = '';
+  if (opts.correction) {
+    inner += '<div class="tb-correct">'+
+      '<div class="tb-c-lbl">✏️ Correction</div>'+
+      '<div class="tb-c-wrong">'+this.esc(opts.correction.wrong)+'</div>'+
+      '<div class="tb-c-fixed">'+this.esc(opts.correction.fixed)+'</div>'+
+      '<div class="tb-c-why">'+this.esc(opts.correction.why)+'</div>'+
+    '</div>';
+  }
+  if (opts.ru) {
+    inner += '<div class="tb-ru">'+this.esc(opts.ru)+
+      (side==='bot' ? ' <button class="tb-say" onclick="AudioService.speak(this.getAttribute(\'data-r\'))" data-r="'+this.esc(opts.ru).replace(/"/g,'&quot;')+'">🔊</button>' : '')+
+      '</div>';
+  }
+  if (opts.hint) inner += '<div class="tb-hint">'+this.esc(opts.hint)+'</div>';
+  if (opts.plain) inner += '<div class="tb-plain">'+this.esc(opts.plain)+'</div>';
+  row.innerHTML = inner;
+  box.appendChild(row);
+  box.scrollTop = box.scrollHeight;
+  return row;
+};
+
+TUTOR.setBusy = function(b){
+  this.busy = b;
+  const box = document.getElementById('tutor-msgs');
+  let t = document.getElementById('tutor-typing');
+  if (b && !t && box) {
+    t = document.createElement('div');
+    t.id = 'tutor-typing'; t.className = 'tb-row bot';
+    t.innerHTML = '<div class="tb-ru tb-typing">…</div>';
+    box.appendChild(t); box.scrollTop = box.scrollHeight;
+  } else if (!b && t) { t.remove(); }
+};
+
+TUTOR.turn = async function(isOpening){
+  if (this.busy) return;
+  this.setBusy(true);
+  try {
+    const sys = this.systemPrompt(this.topic.title);
+    const res = await this.ask(this.history, sys);
+    const parsed = this.parseReply(res.text);
+    this.history.push({role:'model', text:parsed.reply});
+    this.setBusy(false);
+    this.addBubble('bot', {correction: isOpening?null:parsed.correction, ru:parsed.reply, hint:parsed.hint});
+    if (this.speakOn && parsed.reply) AudioService.speak(parsed.reply);
+  } catch (e) {
+    this.setBusy(false);
+    this.addBubble('bot', {plain: '⚠️ ' + (e.msg || 'Something went wrong. Check your API key in ⚙.')});
+  }
+};
+
+TUTOR.sendText = function(){
+  const inp = document.getElementById('tutor-text');
+  if (!inp) return;
+  const v = inp.value.trim();
+  if (!v || this.busy) return;
+  inp.value = '';
+  this.addBubble('user', {ru:v});
+  this.history.push({role:'user', text:v});
+  this.turn(false);
+};
+
+TUTOR.toggleSpeak = function(){
+  this.speakOn = !this.speakOn;
+  const b = document.getElementById('tutor-spk');
+  if (b){ b.textContent = this.speakOn?'🔊':'🔇'; b.classList.toggle('on', this.speakOn); }
+};
+
+TUTOR.exit = function(){
+  if (this.rec && this.listening) { try{this.rec.stop();}catch(e){} }
+  this.topic = null; this.history = [];
+  this.renderHome();
+};
+
+// ---------- voice input (Web Speech API, free) ----------
+TUTOR.toggleMic = function(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { this.addBubble('bot', {plain:'🎤 Voice input needs Chrome or Android browser. You can type instead.'}); return; }
+  if (this.listening) { try{this.rec.stop();}catch(e){} return; }
+  const rec = new SR();
+  this.rec = rec;
+  rec.lang = 'ru-RU';
+  rec.interimResults = true;
+  rec.continuous = false;
+  const micBtn = document.getElementById('tutor-mic');
+  const inp = document.getElementById('tutor-text');
+  rec.onstart = () => { this.listening = true; if(micBtn){micBtn.classList.add('rec'); micBtn.textContent='⏺';} };
+  rec.onerror = () => { this.listening = false; if(micBtn){micBtn.classList.remove('rec'); micBtn.textContent='🎤';} };
+  rec.onend = () => {
+    this.listening = false;
+    if(micBtn){micBtn.classList.remove('rec'); micBtn.textContent='🎤';}
+    if (inp && inp.value.trim()) this.sendText();
+  };
+  rec.onresult = (ev) => {
+    let s = '';
+    for (let i=0;i<ev.results.length;i++) s += ev.results[i][0].transcript;
+    if (inp) inp.value = s;
+  };
+  try { rec.start(); } catch(e){}
+};
+
+// ---------- settings (API keys) ----------
+TUTOR.openSettings = function(){
+  const m = document.getElementById('tutor-modal');
+  if (!m) return;
+  document.getElementById('tutor-k-gemini').value = this.keys.gemini;
+  document.getElementById('tutor-k-anthropic').value = this.keys.anthropic;
+  m.classList.add('on');
+};
+TUTOR.closeSettings = function(){ const m=document.getElementById('tutor-modal'); if(m) m.classList.remove('on'); };
+TUTOR.saveSettings = function(){
+  this.keys.gemini = document.getElementById('tutor-k-gemini').value.trim();
+  this.keys.anthropic = document.getElementById('tutor-k-anthropic').value.trim();
+  // keep keys only in-memory by default; optionally remember for this browser
+  if (document.getElementById('tutor-remember').checked) {
+    try { LS.setItem('rp_k_gem', this.keys.gemini); LS.setItem('rp_k_ant', this.keys.anthropic); } catch(e){}
+  } else {
+    try { LS.removeItem('rp_k_gem'); LS.removeItem('rp_k_ant'); } catch(e){}
+  }
+  this.closeSettings();
+  if (!this.topic) this.renderHome();
+};
+TUTOR.loadKeys = function(){
+  try {
+    this.keys.gemini = LS.getItem('rp_k_gem') || '';
+    this.keys.anthropic = LS.getItem('rp_k_ant') || '';
+  } catch(e){}
+};
+
+TUTOR.open = function(){
+  this.loadKeys();
+  if (this.topic) this.renderChat(); else this.renderHome();
+};
+
 </script>
 </body>
 </html>
